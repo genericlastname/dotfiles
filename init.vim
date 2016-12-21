@@ -14,19 +14,31 @@ set ignorecase
 set cursorline
 
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 
 " == Plugins ==
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/seoul256.vim'
+"Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-repeat'
+"Plug 'itchyny/lightline.vim'
+"Plug 'morhetz/gruvbox'
 Plug 'neomake/neomake'
+Plug 'edkolev/tmuxline.vim'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'xolox/vim-misc'
+Plug 'tpope/vim-unimpaired'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'edkolev/tmuxline.vim'
+"Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
+"Plug 'daviesjamie/vim-base16-lightline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -49,24 +61,50 @@ inoremap jj <Esc>
 nnoremap <silent> <CR> :nohl<CR>
 
 " == Colorscheme ==
-colorscheme seoul256
+set bg=dark
+colorscheme base16-flat
 
 " == Configs ==
 " -- lightline --
-let g:lightline = {
-	\ 'colorscheme': 'seoul256',
-	\ 'component': {
-	\ 	'readonly': '%{&readonly?"x":""}',
-	\	'lineinfo': '|| %-2v'
-	\ 	}
-	\ }
+"let g:lightline = {
+"            \ 'colorscheme': 'base16',
+"            \ 'component': {
+"            \ 	'readonly': '%{&readonly?"x":""}',
+"            \	'lineinfo': '|| %-2v'
+"            \ 	}
+"            \ }
 
 " -- vinegar --
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+"let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 " -- deoplete --
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 " -- neomake --
 autocmd! BufWritePost,BufEnter * Neomake
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" -- netrw --
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+    noremap <buffer> q :bd<CR>
+endfunction
+
+let g:netrw_localrmdir='rm -r'
+
+" -- tmuxline --
+let g:tmuxline_powerline_separators = 0
+
+" -- airline --
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='base16'
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif

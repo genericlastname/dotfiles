@@ -1,0 +1,6 @@
+! Base16 Flat
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+URxvt.font: xft:FantasqueSansMono:size=11
+URxvt.letterSpace: -1
+URxvt.scrollBar: false
