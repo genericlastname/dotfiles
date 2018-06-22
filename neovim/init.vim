@@ -15,6 +15,7 @@ Plug 'tpope/vim-unimpaired'
 " }}}
 " UI {{{
 Plug 'fxn/vim-monochrome'
+Plug 'jacoborus/tender.vim'
 Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " }}}
@@ -42,13 +43,14 @@ let g:netrw_localrmdir='rm -r'
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'tender',
       \ }
 " }}}
 "}}}
 " Basic setups and commands {{{
-let g:monochrome_italic_comments = 1
-colorscheme monochrome
+" let g:monochrome_italic_comments = 1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colorscheme tender
 set number
 
 set wildmode=longest,list " use more bash-like completion
