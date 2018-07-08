@@ -17,10 +17,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'fxn/vim-monochrome'
 Plug 'jacoborus/tender.vim'
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 " }}}
 " Languages {{{
 Plug 'w0rp/ale'
+Plug 'fatih/vim-go'
 " }}}
 
 call plug#end()
