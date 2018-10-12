@@ -40,6 +40,9 @@ let g:fzf_layout = { 'down': '~15%' }
 " Auto Pairs
 Plug 'jiangmiao/auto-pairs'
 
+" Vim Tmux Navigator
+Plug 'christoomey/vim-tmux-navigator'
+let g:tmux_navigator_no_mappings = 1
 " }}}
 " ---UI--- {{{
 " Themes
@@ -95,7 +98,6 @@ Plug 'w0rp/ale'
 
 call plug#end()
 "}}}
-
 " ---SETTINGS--- {{{
 " basic setups and commands
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -116,7 +118,6 @@ au TermOpen * set nonumber " turn off line numbers in the term
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " }}}
-
 " ---MAPPINGS--- {{{
 " VIM {{{
 " map escape to exit term-mode
@@ -144,10 +145,10 @@ inoremap <A-h> <C-\><C-N><C-w>h
 inoremap <A-j> <C-\><C-N><C-w>j
 inoremap <A-k> <C-\><C-N><C-w>k
 inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+" nnoremap <A-h> <C-w>h
+" nnoremap <A-j> <C-w>j
+" nnoremap <A-k> <C-w>k
+" nnoremap <A-l> <C-w>l
 
 " set leader
 let mapleader = ","
@@ -156,6 +157,13 @@ let mapleader = ","
 " Fzf.vim keybindings
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Buffers<cr>
+
+" Tmux Navigator
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 " }}}
 " }}}
 
