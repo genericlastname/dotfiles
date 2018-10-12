@@ -1,73 +1,127 @@
 " therabidmachine's neovim config file
 " Now with folded sections!
 
-" Plugins {{{
+" ---PLUGINS--- {{{
 call plug#begin('~/.vim/plugged')
 
-" Essentials {{{
+" ---Essentials--- {{{
+" Fugitive
 Plug 'tpope/vim-fugitive'
+
+" Surround
 Plug 'tpope/vim-surround'
+
+" Repeat
 Plug 'tpope/vim-repeat'
+
+" Commentary
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-unimpaired'
-" }}}
-" UI {{{
-Plug 'fxn/vim-monochrome'
-Plug 'jacoborus/tender.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'edkolev/tmuxline.vim'
-" }}}
-" Languages {{{
-Plug 'w0rp/ale'
-Plug 'fatih/vim-go'
-" }}}
 
-call plug#end()
-
-" Plugin Configs {{{
 " vinegar
+Plug 'tpope/vim-vinegar'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-
-" netrw
 augroup netrw_mapping
     autocmd!
     autocmd filetype netrw call NetrwMapping()
 augroup END
-
 function! NetrwMapping()
     noremap <buffer> q :bd<CR>
 endfunction
-
 let g:netrw_localrmdir='rm -r'
 
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'tender',
-      \ }
-" }}}
-"}}}
-" Basic setups and commands {{{
-" let g:monochrome_italic_comments = 1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme tender
-set number
+" Unimpaired
+Plug 'tpope/vim-unimpaired'
 
+" Fzf and fzf.vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~15%' }
+
+" Auto Pairs
+Plug 'jiangmiao/auto-pairs'
+
+" }}}
+" ---UI--- {{{
+" Themes
+Plug 'fxn/vim-monochrome'
+Plug 'jacoborus/tender.vim'
+Plug 'morhetz/gruvbox'
+
+" Lines
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ }
+Plug 'edkolev/tmuxline.vim'
+" }}}
+" ---Languages--- {{{
+
+
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
+"Rust
+Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
+au FileType rust nnoremap <leader>c :RustRun<cr>
+let g:deoplete#sources#rust#racer_binary='/home/kyle/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/home/kyle/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+
+" Python
+Plug 'zchee/deoplete-jedi'
+autocmd Filetype python setlocal makeprg=/usr/bin/python3\ %
+let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
+let g:deoplete#sources#jedi#show_docstring=0
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'carlitux/deoplete-ternjs'
+
+" Toml
+Plug 'cespare/vim-toml'
+" }}}
+" ---Coding Helpers--- {{{
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
+" close preview after completion
+autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+let g:deoplete#enable_at_startup = 1
+
+" ALE 
+Plug 'w0rp/ale'
+" }}}
+
+call plug#end()
+"}}}
+
+" ---SETTINGS--- {{{
+" basic setups and commands
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set bg=dark
+let g:gruvbox_contrast_light="hard"
+colorscheme gruvbox
+set number
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
 set cursorline
-
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-
 set termguicolors
+let g:monochrome_italic_comments = 1
+au TermOpen * set nonumber " turn off line numbers in the term
 
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType vimrc setlocal foldmethod=marker
+au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " }}}
-" Keybinds {{{
+
+" ---MAPPINGS--- {{{
+" VIM {{{
+" map escape to exit term-mode
+tnoremap <esc> <C-\><C-n>
+
 " bang to instant execute
 nnoremap ! :!
 
@@ -95,8 +149,14 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-" start ctrlp in buffer mode
-nnoremap <C-l> :CtrlPBuffer<return>
+" set leader
+let mapleader = ","
+" }}}
+" PLUGINS {{{
+" Fzf.vim keybindings
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :Buffers<cr>
+" }}}
 " }}}
 
 " # vim: set foldmethod=marker:
