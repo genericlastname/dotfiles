@@ -125,3 +125,6 @@ export PS1="\[\e[2m\]\W $ \[\e[0m\]"
 
 export GOPATH=/home/$USER/.go
 export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPATH/bin:
+
+# add an alias to easily activate python3 venv
+alias pyactivate=". ./.venv/bin/activate"
