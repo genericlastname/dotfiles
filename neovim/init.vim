@@ -84,6 +84,10 @@ Plug 'carlitux/deoplete-ternjs'
 
 " Toml
 Plug 'cespare/vim-toml'
+
+" HTML/CSS
+Plug 'mattn/emmet-vim'
+
 " }}}
 " ---Coding Helpers--- {{{
 " deoplete
@@ -109,8 +113,8 @@ set wildmode=longest,list " use more bash-like completion
 set ignorecase
 set cursorline
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
 set termguicolors
 let g:monochrome_italic_comments = 1
 au TermOpen * set nonumber " turn off line numbers in the term
