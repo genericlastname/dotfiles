@@ -46,9 +46,8 @@ let g:tmux_navigator_no_mappings = 1
 " }}}
 " ---UI--- {{{
 " Themes
-Plug 'fxn/vim-monochrome'
-Plug 'jacoborus/tender.vim'
 Plug 'morhetz/gruvbox'
+Plug 'junegunn/seoul256.vim'
 
 " Lines
 Plug 'itchyny/lightline.vim'
@@ -106,8 +105,10 @@ call plug#end()
 " basic setups and commands
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
+" let g:seoul25_background = 233
+" colo seoul256
 let g:gruvbox_contrast_light="hard"
-colorscheme gruvbox
+colo gruvbox
 set number
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
