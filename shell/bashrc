@@ -128,3 +128,8 @@ export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPA
 
 # add an alias to easily activate python3 venv
 alias pyactivate=". ./.venv/bin/activate"
+
+# add aliases for tmux
+alias tnew="tmux new -s"
+alias tattach="tmux attach -t"
+alias tswitch="tmux switch -t"
