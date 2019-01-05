@@ -120,11 +120,10 @@ fi
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# set prompt: (directory)$ _
+# set prompt: directory $ _
 export PS1="\[\e[2m\]\W $ \[\e[0m\]"
 
-export GOPATH=/home/$USER/.go
-export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPATH/bin:
+# export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPATH/bin:
 
 # add an alias to easily activate python3 venv
 alias pyactivate=". ./.venv/bin/activate"
@@ -133,3 +132,7 @@ alias pyactivate=". ./.venv/bin/activate"
 alias tnew="tmux new -s"
 alias tattach="tmux attach -t"
 alias tswitch="tmux switch -t"
+
+# show dirs first
+alias ls='ls --color -h --group-directories-first'
+
