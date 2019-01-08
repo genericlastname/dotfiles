@@ -2,9 +2,13 @@
 " Now with folded sections!
 
 " ---PLUGINS--- {{{
+
+
 call plug#begin('~/.vim/plugged')
 
 " ---Essentials--- {{{
+
+
 " Fugitive
 Plug 'tpope/vim-fugitive'
 
@@ -45,9 +49,10 @@ Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 " }}}
 " ---UI--- {{{
+
+
 " Themes
 Plug 'morhetz/gruvbox'
-Plug 'junegunn/seoul256.vim'
 
 " Lines
 Plug 'itchyny/lightline.vim'
@@ -102,11 +107,11 @@ Plug 'w0rp/ale'
 call plug#end()
 "}}}
 " ---SETTINGS--- {{{
+
+
 " basic setups and commands
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
-" let g:seoul25_background = 233
-" colo seoul256
 let g:gruvbox_contrast_light="hard"
 colo gruvbox
 set number
@@ -125,6 +130,8 @@ au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " }}}
 " ---MAPPINGS--- {{{
 " VIM {{{
+
+
 " map escape to exit term-mode
 tnoremap <esc> <C-\><C-n>
 
@@ -159,6 +166,8 @@ inoremap <A-l> <C-\><C-N><C-w>l
 let mapleader = ","
 " }}}
 " PLUGINS {{{
+
+
 " Fzf.vim keybindings
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Buffers<cr>
