@@ -67,14 +67,13 @@ Plug 'edkolev/tmuxline.vim'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
 
 "Rust
 Plug 'rust-lang/rust.vim'
-Plug 'sebastianmarkow/deoplete-rust'
-au FileType rust nnoremap <leader>c :RustRun<cr>
-let g:deoplete#sources#rust#racer_binary='/home/kyle/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/kyle/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" Plug 'sebastianmarkow/deoplete-rust'
+Plug 'racer-rust/vim-racer'
+au Filetype rust nmap gd <Plug>(rust-def-split)
 
 " Python
 Plug 'zchee/deoplete-jedi'
@@ -122,6 +121,7 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set termguicolors
+set hidden
 let g:monochrome_italic_comments = 1
 au TermOpen * set nonumber " turn off line numbers in the term
 
