@@ -124,6 +124,7 @@ export EDITOR="$VISUAL"
 export PS1="\[\e[2m\]\W $ \[\e[0m\]"
 
 # export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPATH/bin:
+export PATH=/home/$USER/bin:/home/$USER/.cargo/bin:$PATH
 
 # add an alias to easily activate python3 venv
 alias pyactivate=". ./.venv/bin/activate"
@@ -138,3 +139,6 @@ alias ls='ls --color -h --group-directories-first'
 
 # make fzf ignore files in '.gitignore' by using `fd` instead of `find`
 export FZF_DEFAULT_COMMAND='fd --type f'
+
+# Set RUST_SRC_PATH for racer
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
