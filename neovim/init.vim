@@ -1,6 +1,62 @@
 " therabidmachine's neovim config file
 " Now with folded sections!
 
+" ---MAPPINGS--- {{{
+" VIM {{{
+
+
+" map escape to exit term-mode
+tnoremap <esc> <C-\><C-n>
+
+" bang to instant execute
+nnoremap ! :!
+
+" add lines quickly
+nnoremap <C-j> o<Esc>k
+nnoremap <C-k> O<Esc>j
+
+" exiting insert mode
+inoremap jj <Esc>
+
+" clear search when pressing enter
+nnoremap <silent> <CR> :nohl<return>
+
+" window switching keys
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+" nnoremap <A-h> <C-w>h
+" nnoremap <A-j> <C-w>j
+" nnoremap <A-k> <C-w>k
+" nnoremap <A-l> <C-w>l
+
+" set leader
+let mapleader = ","
+
+" set key to quickly open vimrc
+nnoremap <leader>v :e ~/projects/dotfiles/neovim/init.vim
+
+" }}}
+" PLUGINS {{{
+
+
+" Fzf.vim keybindings
+nnoremap <C-p> :Files<cr>
+nnoremap <C-l> :Buffers<cr>
+
+" Tmux Navigator
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+" }}}
+" }}}
 " ---PLUGINS--- {{{
 
 
@@ -69,11 +125,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
 
-"Rust
+" Rust
 Plug 'rust-lang/rust.vim'
-" Plug 'sebastianmarkow/deoplete-rust'
 Plug 'racer-rust/vim-racer'
 au Filetype rust nmap gd <Plug>(rust-def-split)
+au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
 
 " Python
 Plug 'zchee/deoplete-jedi'
@@ -127,58 +183,6 @@ au TermOpen * set nonumber " turn off line numbers in the term
 
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" }}}
-" ---MAPPINGS--- {{{
-" VIM {{{
-
-
-" map escape to exit term-mode
-tnoremap <esc> <C-\><C-n>
-
-" bang to instant execute
-nnoremap ! :!
-
-" add lines quickly
-nnoremap <C-j> o<Esc>k
-nnoremap <C-k> O<Esc>j
-
-" exiting insert mode
-inoremap jj <Esc>
-
-" clear search when pressing enter
-nnoremap <silent> <CR> :nohl<return>
-
-" window switching keys
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-" nnoremap <A-h> <C-w>h
-" nnoremap <A-j> <C-w>j
-" nnoremap <A-k> <C-w>k
-" nnoremap <A-l> <C-w>l
-
-" set leader
-let mapleader = ","
-" }}}
-" PLUGINS {{{
-
-
-" Fzf.vim keybindings
-nnoremap <C-p> :Files<cr>
-nnoremap <C-l> :Buffers<cr>
-
-" Tmux Navigator
-nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-" }}}
 " }}}
 
 " # vim: set foldmethod=marker:
