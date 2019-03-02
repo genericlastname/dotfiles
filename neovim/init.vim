@@ -39,7 +39,7 @@ inoremap <A-l> <C-\><C-N><C-w>l
 let mapleader = ","
 
 " set key to quickly open vimrc
-nnoremap <leader>v :e ~/projects/dotfiles/neovim/init.vim
+nnoremap <leader>v :e ~/projects/dotfiles/neovim/init.vim<cr>
 
 " }}}
 " PLUGINS {{{
