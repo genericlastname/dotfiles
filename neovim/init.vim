@@ -173,7 +173,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
 let g:gruvbox_contrast_light="hard"
 colo gruvbox
-set number
+" set number
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
 set cursorline
@@ -187,6 +187,14 @@ au TermOpen * set nonumber " turn off line numbers in the term
 
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
 " }}}
 
 " # vim: set foldmethod=marker:
