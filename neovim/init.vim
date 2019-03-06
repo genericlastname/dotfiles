@@ -148,6 +148,9 @@ Plug 'cespare/vim-toml'
 " HTML/CSS
 Plug 'mattn/emmet-vim'
 
+" Vimscript
+Plug 'Shougo/neco-vim'
+
 " }}}
 " ---Coding Helpers--- {{{
 " deoplete
