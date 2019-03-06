@@ -123,7 +123,8 @@ Plug 'edkolev/tmuxline.vim'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
-au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
 
 " Rust
 Plug 'rust-lang/rust.vim'
