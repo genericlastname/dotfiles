@@ -120,8 +120,8 @@ fi
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# set prompt: directory $ _
-export PS1="\[\e[2m\]\W >  \[\e[0m\]"
+# set prompt
+export PS1="\[\e[2m\]\W > \[\e[0m\]"
 
 # export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPATH/bin:
 export PATH=/home/$USER/bin:/home/$USER/.cargo/bin:$PATH
