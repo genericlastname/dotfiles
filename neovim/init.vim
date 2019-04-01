@@ -142,8 +142,8 @@ au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
 " Python
 Plug 'zchee/deoplete-jedi'
 au Filetype python setlocal makeprg=/usr/bin/python3\ %
-au FileType python setlocal foldmethod=indent |
-  \ setlocal foldnestmax=2
+" au FileType python setlocal foldmethod=indent |
+"   \ setlocal foldnestmax=2
 let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
 let g:deoplete#sources#jedi#show_docstring=0
 
