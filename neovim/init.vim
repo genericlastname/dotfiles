@@ -81,8 +81,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 augroup netrw_mapping
-    autocmd!
-    autocmd filetype netrw call NetrwMapping()
+    au!
+    au filetype netrw call NetrwMapping()
 augroup END
 function! NetrwMapping()
     noremap <buffer> q :bd<CR>
@@ -103,6 +103,13 @@ Plug 'jiangmiao/auto-pairs'
 " Vim Tmux Navigator
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
+
+"UtilSnips
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 " }}}
 " ---UI--- {{{
 
@@ -134,7 +141,9 @@ au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
 
 " Python
 Plug 'zchee/deoplete-jedi'
-autocmd Filetype python setlocal makeprg=/usr/bin/python3\ %
+au Filetype python setlocal makeprg=/usr/bin/python3\ %
+au FileType python setlocal foldmethod=indent |
+  \ setlocal foldnestmax=2
 let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
 let g:deoplete#sources#jedi#show_docstring=0
 
@@ -151,12 +160,20 @@ Plug 'mattn/emmet-vim'
 " Vimscript
 Plug 'Shougo/neco-vim'
 
+" LaTeX
+Plug 'lervag/vimtex'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
 " }}}
 " ---Coding Helpers--- {{{
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
 " close preview after completion
-autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+au InsertLeave * if pumvisible() == 0 | pclose | endif
 let g:deoplete#enable_at_startup = 1
 
 " ALE 
@@ -190,9 +207,9 @@ au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 set number relativenumber
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+  au!
+  au BufEnter,FocusGained,InsertLeave * set relativenumber
+  au BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
 " }}}
