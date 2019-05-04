@@ -120,8 +120,15 @@ Plug 'morhetz/gruvbox'
 " Lines
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ }
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste'  ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head'
+  \ },
+  \ }
 Plug 'edkolev/tmuxline.vim'
 " }}}
 " ---Languages--- {{{
@@ -167,6 +174,9 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+" C++
+Plug 'tweekmonster/deoplete-clang2'
 
 " }}}
 " ---Coding Helpers--- {{{
