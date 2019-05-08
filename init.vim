@@ -39,7 +39,7 @@ inoremap <A-l> <C-\><C-N><C-w>l
 let mapleader = ","
 
 " set key to quickly open vimrc
-nnoremap <leader>v :e ~/projects/dotfiles/neovim/init.vim<cr>
+nnoremap <leader>v :e ~/projects/dotfiles/init.vim<cr>
 
 " }}}
 " PLUGINS {{{
@@ -177,6 +177,11 @@ let g:tex_conceal='abdmg'
 
 " C++
 Plug 'tweekmonster/deoplete-clang2'
+
+" Lua
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
+let g:lua_complete_omni=1
 
 " }}}
 " ---Coding Helpers--- {{{
