@@ -54,7 +54,6 @@ nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 " }}}
 " }}}
 " ---PLUGINS--- {{{
@@ -104,12 +103,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 
-"UtilSnips
-Plug 'sirver/ultisnips'
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
 " }}}
 " ---UI--- {{{
 
@@ -135,16 +128,16 @@ Plug 'edkolev/tmuxline.vim'
 
 
 " Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
-au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
-au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'zchee/deoplete-go', { 'do': 'make' }
+" au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+" au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
 
-" Rust
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-au Filetype rust nmap gd <Plug>(rust-def-split)
-au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+" " Rust
+" Plug 'rust-lang/rust.vim'
+" Plug 'racer-rust/vim-racer'
+" au Filetype rust nmap gd <Plug>(rust-def-split)
+" au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
 
 " Python
 Plug 'zchee/deoplete-jedi'
@@ -154,34 +147,20 @@ au Filetype python setlocal makeprg=/usr/bin/python3\ %
 let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
 let g:deoplete#sources#jedi#show_docstring=0
 
-" Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'carlitux/deoplete-ternjs'
-
-" Toml
-Plug 'cespare/vim-toml'
-
 " HTML/CSS
 Plug 'mattn/emmet-vim'
+au FileType html setlocal tabstop=4
+au FileType css setlocal tabstop=4
+
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'leshill/vim-json'
 
 " Vimscript
 Plug 'Shougo/neco-vim'
 
-" LaTeX
-Plug 'lervag/vimtex'
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
 " C++
 Plug 'tweekmonster/deoplete-clang2'
-
-" Lua
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-lua-ftplugin'
-let g:lua_complete_omni=1
 
 " }}}
 " ---Coding Helpers--- {{{
@@ -226,6 +205,9 @@ augroup numbertoggle
   au BufEnter,FocusGained,InsertLeave * set relativenumber
   au BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
+
+au InsertEnter * set timeoutlen=200
+au InsertLeave * set timeoutlen=1000
 
 " }}}
 
