@@ -140,11 +140,11 @@ Plug 'zchee/deoplete-go', { 'do': 'make' }
 au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
 au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
 
-" Rust
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-au Filetype rust nmap gd <Plug>(rust-def-split)
-au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+" " Rust
+" Plug 'rust-lang/rust.vim'
+" Plug 'racer-rust/vim-racer'
+" au Filetype rust nmap gd <Plug>(rust-def-split)
+" au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
 
 " Python
 Plug 'zchee/deoplete-jedi'
@@ -167,14 +167,6 @@ Plug 'mattn/emmet-vim'
 " Vimscript
 Plug 'Shougo/neco-vim'
 
-" LaTeX
-Plug 'lervag/vimtex'
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
 " C++
 Plug 'tweekmonster/deoplete-clang2'
 
@@ -188,6 +180,7 @@ let g:deoplete#enable_at_startup = 1
 
 " ALE 
 Plug 'w0rp/ale'
+
 " }}}
 
 call plug#end()
@@ -221,6 +214,9 @@ augroup numbertoggle
   au BufEnter,FocusGained,InsertLeave * set relativenumber
   au BufLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
+
+" add platform specific code for each computer
+source $HOME/.config/nvim/platform.vim
 
 " }}}
 
