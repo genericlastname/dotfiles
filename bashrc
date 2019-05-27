@@ -152,4 +152,5 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # add computer specific config for different builds
-source $HOME/.config/bash/build.sh
+export PLATFORM=$HOME/.config/bash/platform.sh
+if [ -f  $PLATFORM ]; source $PLATFORM; fi
