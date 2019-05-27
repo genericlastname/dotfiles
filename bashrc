@@ -149,4 +149,7 @@ alias ls='ls --color -h --group-directories-first'
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Set RUST_SRC_PATH for racer
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+# export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
+# add computer specific config for different builds
+source $HOME/.config/bash/build.sh

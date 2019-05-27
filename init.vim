@@ -172,6 +172,7 @@ let g:deoplete#enable_at_startup = 1
 
 " ALE 
 Plug 'w0rp/ale'
+
 " }}}
 
 call plug#end()
@@ -208,6 +209,16 @@ augroup END
 
 au InsertEnter * set timeoutlen=200
 au InsertLeave * set timeoutlen=1000
+
+" Function to source only if file exists
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+" add platform specific code for each computer
+call SourceIfExists("$HOME/.config/nvim/platform.vim")
 
 " }}}
 
