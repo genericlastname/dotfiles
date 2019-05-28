@@ -153,4 +153,4 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # add computer specific config for different builds
 export PLATFORM=$HOME/.config/bash/platform.sh
-if [ -f  $PLATFORM ]; source $PLATFORM; fi
+if [ -f  $PLATFORM ]; then source $PLATFORM; fi
