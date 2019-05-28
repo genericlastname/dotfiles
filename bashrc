@@ -131,8 +131,8 @@ git_branch() {
 # set prompt
 export PS1="\[\e[2m\]\W \$(git_branch)> \[\e[0m\]"
 
-# export PATH=$PATH:/usr/local/go/bin:/home/$USER/bin:/home/$USER/.cargo/bin:$GOPATH/bin:
-export PATH=/home/$USER/bin:/home/$USER/.cargo/bin:$PATH
+# export PATH=$PATH:/usr/local/go/bin:$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:
+export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 
 # add an alias to easily activate python3 venv
 alias pyactivate=". ./.venv/bin/activate"
@@ -154,3 +154,5 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # add computer specific config for different builds
 export PLATFORM=$HOME/.config/bash/platform.sh
 if [ -f  $PLATFORM ]; then source $PLATFORM; fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
