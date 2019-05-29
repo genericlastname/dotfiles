@@ -54,6 +54,10 @@ nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+
+" bufkill.vim
+nnoremap <silent> <leader>bd :BD<cr>
+
 " }}}
 " }}}
 " ---PLUGINS--- {{{
@@ -102,6 +106,9 @@ Plug 'jiangmiao/auto-pairs'
 " Vim Tmux Navigator
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
+
+" bufkill.vim -- so i can close bufs without removing the split
+Plug 'qpkorr/vim-bufkill'
 
 " }}}
 " ---UI--- {{{
@@ -160,7 +167,7 @@ Plug 'leshill/vim-json'
 Plug 'Shougo/neco-vim'
 
 " C++
-Plug 'tweekmonster/deoplete-clang2'
+" Plug 'tweekmonster/deoplete-clang2'
 
 " }}}
 " ---Coding Helpers--- {{{
@@ -172,6 +179,9 @@ let g:deoplete#enable_at_startup = 1
 
 " ALE 
 Plug 'w0rp/ale'
+let g:ale_linters = {
+  \ 'cpp': ['clangtidy'] ,
+  \ }
 
 " }}}
 
