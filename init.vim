@@ -30,10 +30,6 @@ inoremap <A-h> <C-\><C-N><C-w>h
 inoremap <A-j> <C-\><C-N><C-w>j
 inoremap <A-k> <C-\><C-N><C-w>k
 inoremap <A-l> <C-\><C-N><C-w>l
-" nnoremap <A-h> <C-w>h
-" nnoremap <A-j> <C-w>j
-" nnoremap <A-k> <C-w>k
-" nnoremap <A-l> <C-w>l
 
 " set leader
 let mapleader = ","
@@ -150,8 +146,6 @@ Plug 'edkolev/tmuxline.vim'
 " Python
 Plug 'zchee/deoplete-jedi'
 au Filetype python setlocal makeprg=/usr/bin/python3\ %
-" au FileType python setlocal foldmethod=indent |
-"   \ setlocal foldnestmax=2
 let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
 let g:deoplete#sources#jedi#show_docstring=0
 
@@ -195,8 +189,7 @@ call plug#end()
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
 let g:gruvbox_contrast_light="hard"
-colo gruvbox
-" set number
+colorscheme gruvbox
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
 set cursorline
