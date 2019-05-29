@@ -88,7 +88,7 @@ augroup netrw_mapping
     au filetype netrw call NetrwMapping()
 augroup END
 function! NetrwMapping()
-    noremap <buffer> q :bd<CR>
+    nnoremap <buffer> q :BD<CR>
 endfunction
 let g:netrw_localrmdir='rm -r'
 
