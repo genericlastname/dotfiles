@@ -86,11 +86,12 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 augroup netrw_mapping
     au!
     au filetype netrw call NetrwMapping()
+    " stop *.h files from being grayed out
+    au Filetype netrw setlocal suffixes-=.h
+    au Filetype netrw nnoremap <buffer> q :BD<CR>
 augroup END
-function! NetrwMapping()
-    nnoremap <buffer> q :BD<CR>
-endfunction
 let g:netrw_localrmdir='rm -r'
+
 
 " Unimpaired
 Plug 'tpope/vim-unimpaired'
