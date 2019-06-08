@@ -138,10 +138,10 @@ Plug 'edkolev/tmuxline.vim'
 " au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
 
 " " Rust
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer'
-" au Filetype rust nmap gd <Plug>(rust-def-split)
-" au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+au Filetype rust nmap gd <Plug>(rust-def-split)
+au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
 
 " Python
 Plug 'zchee/deoplete-jedi'
