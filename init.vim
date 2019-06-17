@@ -2,6 +2,8 @@
 " Now with folded sections!
 
 " ---MAPPINGS--- {{{
+
+
 " VIM {{{
 
 
@@ -34,9 +36,6 @@ inoremap <A-l> <C-\><C-N><C-w>l
 " set leader
 let mapleader = ","
 
-" set key to quickly open vimrc
-nnoremap <leader>v :e ~/projects/dotfiles/init.vim<cr>
-
 " }}}
 " PLUGINS {{{
 
@@ -55,6 +54,8 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <leader>bd :BD<cr>
 
 " }}}
+
+
 " }}}
 " ---PLUGINS--- {{{
 
@@ -88,7 +89,6 @@ augroup netrw_mapping
 augroup END
 let g:netrw_localrmdir='rm -r'
 
-
 " Unimpaired
 Plug 'tpope/vim-unimpaired'
 
@@ -113,11 +113,12 @@ Plug 'qpkorr/vim-bufkill'
 
 " Themes
 Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
 
 " Lines
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'one',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste'  ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -127,32 +128,46 @@ let g:lightline = {
   \ },
   \ }
 Plug 'edkolev/tmuxline.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+
 " }}}
 " ---Languages--- {{{
 
 
 " Golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'zchee/deoplete-go', { 'do': 'make' }
-" au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
-" au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+augroup ft_golang
+  au!
+  au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+  au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
+augroup END
 
-" " Rust
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer'
-" au Filetype rust nmap gd <Plug>(rust-def-split)
-" au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+augroup ft_rust
+  au!
+  au Filetype rust nmap gd <Plug>(rust-def-split)
+  au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+augroup END
 
 " Python
 Plug 'zchee/deoplete-jedi'
-au Filetype python setlocal makeprg=/usr/bin/python3\ %
+augroup ft_python
+  au!
+  au Filetype python setlocal makeprg=/usr/bin/python3\ %
+augroup END
 let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
 let g:deoplete#sources#jedi#show_docstring=0
 
 " HTML/CSS
 Plug 'mattn/emmet-vim'
-au FileType html setlocal tabstop=4
-au FileType css setlocal tabstop=4
+augroup ft_html
+  au!
+  au FileType html setlocal tabstop=4
+  au FileType css setlocal tabstop=4
+augroup END
 
 " Javascript
 Plug 'pangloss/vim-javascript'
@@ -163,14 +178,20 @@ Plug 'Shougo/neco-vim'
 
 " C++
 " Plug 'tweekmonster/deoplete-clang2'
+augroup ft_cpp
+  au!
+  au FileType c,cpp setlocal commentstring=//\ %s
+augroup END
 
 " }}}
 " ---Coding Helpers--- {{{
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
 " close preview after completion
-au InsertLeave * if pumvisible() == 0 | pclose | endif
-let g:deoplete#enable_at_startup = 1
+augroup deoplete_preview
+  au!
+  au InsertLeave * if pumvisible() == 0 | pclose | endif
+augroup END
 
 " ALE 
 Plug 'w0rp/ale'
@@ -181,6 +202,8 @@ let g:ale_linters = {
 " }}}
 
 call plug#end()
+
+
 "}}}
 " ---SETTINGS--- {{{
 
@@ -189,7 +212,7 @@ call plug#end()
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
 let g:gruvbox_contrast_light="hard"
-colorscheme gruvbox
+colorscheme night-owl
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
 set cursorline
@@ -199,20 +222,21 @@ set tabstop=2
 set termguicolors
 set hidden
 let g:monochrome_italic_comments = 1
-au TermOpen * set nonumber " turn off line numbers in the term
 
-au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-set number relativenumber
-augroup numbertoggle
+augroup numbers
   au!
   au BufEnter,FocusGained,InsertLeave * set relativenumber
   au BufLeave,FocusLost,InsertEnter * set norelativenumber
+  au TermOpen * set nonumber " turn off line numbers in the term
+  au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  au FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
+set number relativenumber
 
-au InsertEnter * set timeoutlen=200
-au InsertLeave * set timeoutlen=1000
+augroup jj_timing
+  au InsertEnter * set timeoutlen=200
+  au InsertLeave * set timeoutlen=1000
+augroup END
 
 " Function to source only if file exists
 function! SourceIfExists(file)
@@ -220,9 +244,9 @@ function! SourceIfExists(file)
     exe 'source' a:file
   endif
 endfunction
-
 " add platform specific code for each computer
 call SourceIfExists("$HOME/.config/nvim/platform.vim")
+
 
 " }}}
 
