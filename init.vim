@@ -36,6 +36,9 @@ inoremap <A-l> <C-\><C-N><C-w>l
 " set leader
 let mapleader = ","
 
+" map <C-e> to jump to end of line in insert mode
+inoremap <C-e> <C-o>$
+
 " }}}
 " PLUGINS {{{
 
@@ -52,6 +55,10 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 
 " bufkill.vim
 nnoremap <silent> <leader>bd :BD<cr>
+
+" ALE
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
 
 " }}}
 
@@ -114,11 +121,14 @@ Plug 'qpkorr/vim-bufkill'
 " Themes
 Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
+Plug 'sjl/badwolf'
 
-" Lines
+" statusline
 Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug '844196/lightline-badwolf.vim'
 let g:lightline = {
-  \ 'colorscheme': 'one',
+  \ 'colorscheme': 'badwolf',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste'  ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -127,6 +137,7 @@ let g:lightline = {
   \   'gitbranch': 'fugitive#head'
   \ },
   \ }
+
 Plug 'edkolev/tmuxline.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
@@ -135,8 +146,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 
 " Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'zchee/deoplete-go', { 'do': 'make' }
 augroup ft_golang
   au!
   au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
@@ -153,7 +164,7 @@ augroup ft_rust
 augroup END
 
 " Python
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 augroup ft_python
   au!
   au Filetype python setlocal makeprg=/usr/bin/python3\ %
@@ -195,9 +206,6 @@ augroup END
 
 " ALE 
 Plug 'w0rp/ale'
-let g:ale_linters = {
-  \ 'cpp': ['clangtidy'] ,
-  \ }
 
 " }}}
 
@@ -212,7 +220,7 @@ call plug#end()
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
 let g:gruvbox_contrast_light="hard"
-colorscheme night-owl
+colorscheme badwolf
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
 set cursorline
