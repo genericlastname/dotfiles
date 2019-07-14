@@ -36,6 +36,9 @@ inoremap <A-l> <C-\><C-N><C-w>l
 " set leader
 let mapleader = ","
 
+" map <C-e> to jump to end of line in insert mode
+inoremap <C-e> <C-o>$
+
 " }}}
 " PLUGINS {{{
 
@@ -52,6 +55,10 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 
 " bufkill.vim
 nnoremap <silent> <leader>bd :BD<cr>
+
+" ALE
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
 
 " }}}
 
@@ -116,7 +123,7 @@ Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
 Plug 'sjl/badwolf'
 
-" Lines
+" statusline
 Plug 'itchyny/lightline.vim'
 Plug '844196/lightline-badwolf.vim'
 let g:lightline = {
@@ -129,6 +136,7 @@ let g:lightline = {
   \   'gitbranch': 'fugitive#head'
   \ },
   \ }
+
 Plug 'edkolev/tmuxline.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
@@ -139,23 +147,23 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " Golang
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'zchee/deoplete-go', { 'do': 'make' }
-" augroup ft_golang
-"   au!
-"   au filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
-"   au filetype go nnoremap <silent> <leader>r :GoRun<cr>
-" augroup END
+augroup ft_golang
+  au!
+  au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+  au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
+augroup END
 
-" " Rust
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer'
-" augroup ft_rust
-"   au!
-"   au filetype rust nmap gd <Plug>(rust-def-split)
-"   au filetype rust nnoremap <silent> <leader>r :RustRun<cr>
-" augroup END
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+augroup ft_rust
+  au!
+  au Filetype rust nmap gd <Plug>(rust-def-split)
+  au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+augroup END
 
 " Python
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 augroup ft_python
   au!
   au filetype python setlocal makeprg=/usr/bin/python3\ %
