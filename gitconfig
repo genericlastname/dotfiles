@@ -2,6 +2,5 @@
 	email = brownkylej@gmail.com
 	name = Kyle Brown
 [alias]
-	lg = 
 	ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	co = checkout
