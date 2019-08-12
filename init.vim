@@ -145,32 +145,35 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 
 " Golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+let g:go_fmt_fail_silently = 1
 augroup ft_golang
   au!
-  au Filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
-  au Filetype go nnoremap <silent> <leader>r :GoRun<cr>
+  au filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+  au filetype go nnoremap <silent> <leader>r :GoRun<cr>
 augroup END
 
 " Rust
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-augroup ft_rust
-  au!
-  au Filetype rust nmap gd <Plug>(rust-def-split)
-  au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
-augroup END
+" Plug 'rust-lang/rust.vim'
+" Plug 'racer-rust/vim-racer'
+" augroup ft_rust
+"   au!
+"   au Filetype rust nmap gd <Plug>(rust-def-split)
+"   au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
+" augroup END
 
 " Python
-" Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi'
 augroup ft_python
   au!
-  au filetype python setlocal makeprg=/usr/bin/python3\ %
+  au filetype python setlocal makeprg=python3\ %
   au filetype python call deoplete#enable()
 augroup END
-let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
+" let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
 let g:deoplete#sources#jedi#show_docstring=0
+let g:python_host_prog = 'python'
+let g:python3_host_prog = 'python3'
 
 " HTML/CSS
 Plug 'mattn/emmet-vim'
@@ -184,6 +187,13 @@ augroup END
 Plug 'pangloss/vim-javascript'
 Plug 'leshill/vim-json'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'mxw/vim-jsx'
+augroup ft_js
+  au!
+  au filetype javascript call deoplete#enable()
+  au filetype html call deoplete#enable()
+  au filetype css cass deoplete#enable()
+augroup END
 
 " Vimscript
 Plug 'Shougo/neco-vim'
@@ -211,10 +221,12 @@ let g:ale_linters = {
   \ 'cpp': ['clangtidy'],
   \ 'python': ['flake8', 'pylint'],
   \ 'javascript': ['eslint'],
+  \ 'go': ['gofmt', 'gobuild'],
   \ }
 
 let g:ale_fixers = {
-  \ 'python': [''],
+  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
+  \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
   \ }
 
 " }}}
