@@ -137,8 +137,6 @@ let g:lightline = {
   \ },
   \ }
 
-Plug 'edkolev/tmuxline.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
 
 " }}}
 " ---Languages--- {{{
@@ -200,6 +198,7 @@ Plug 'Shougo/neco-vim'
 
 " C++
 " Plug 'tweekmonster/deoplete-clang2'
+Plug 'octol/vim-cpp-enhanced-highlight'
 augroup ft_cpp
   au!
   au filetype c,cpp setlocal commentstring=//\ %s
@@ -207,6 +206,8 @@ augroup END
 
 " }}}
 " ---Coding Helpers--- {{{
+
+
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
 " close preview after completion
@@ -228,7 +229,6 @@ let g:ale_fixers = {
   \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
   \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
   \ }
-
 " }}}
 
 call plug#end()
