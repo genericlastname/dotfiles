@@ -151,8 +151,17 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # Set RUST_SRC_PATH for racer
 # export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
+# golang
+export GOPATH=$HOME/.go
+export GOBIN=$GOPATH/bin
+PATH=$PATH:$GOPATH:$GOBIN
+export PATH
+
 # add computer specific config for different builds
 export PLATFORM=$HOME/.config/bash/platform.sh
 if [ -f  $PLATFORM ]; then source $PLATFORM; fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# add npm bin to path
+export PATH=$PATH:$HOME/.npm/bin
