@@ -178,7 +178,7 @@ Plug 'mattn/emmet-vim'
 augroup ft_html
   au!
   au filetype html setlocal tabstop=4
-  au filetype html setlocal noautoindent
+  au filetype html setlocal nowrap
   au filetype css setlocal tabstop=4
 augroup END
 
