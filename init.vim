@@ -178,6 +178,7 @@ Plug 'mattn/emmet-vim'
 augroup ft_html
   au!
   au filetype html setlocal tabstop=4
+  au filetype html setlocal noautoindent
   au filetype css setlocal tabstop=4
 augroup END
 
@@ -215,6 +216,9 @@ augroup deoplete_preview
   au!
   au InsertLeave * if pumvisible() == 0 | pclose | endif
 augroup END
+
+" coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ALE 
 Plug 'w0rp/ale'
