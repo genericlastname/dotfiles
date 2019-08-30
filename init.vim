@@ -177,6 +177,7 @@ Plug 'posva/vim-vue'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+au bufwritepost $MYVIMRC source $MYVIMRC
 
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -220,6 +221,10 @@ function! OpenMarkdownPreview() abort
   call system('open http://localhost:4500')
 endfunction
 " }}}
+
+" Neosnippet
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
 
