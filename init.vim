@@ -162,16 +162,15 @@ augroup END
 " augroup END
 
 " Python
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 augroup ft_python
   au!
   au filetype python setlocal makeprg=python3\ %
   au filetype python call deoplete#enable()
 augroup END
-" let g:deoplete#sources#jedi#python_path='/usr/bin/python3'
-let g:deoplete#sources#jedi#show_docstring=0
-let g:python_host_prog = 'python'
-let g:python3_host_prog = 'python3'
+" let g:deoplete#sources#jedi#python_path='python3'
+" let g:deoplete#sources#jedi#show_docstring=0
 
 " HTML/CSS
 Plug 'mattn/emmet-vim'
@@ -187,11 +186,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'leshill/vim-json'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
+
 augroup ft_js
   au!
   au filetype javascript call deoplete#enable()
   au filetype html call deoplete#enable()
-  au filetype css cass deoplete#enable()
+  au filetype css call deoplete#enable()
 augroup END
 
 " Vimscript
@@ -233,6 +234,17 @@ let g:ale_fixers = {
   \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
   \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
   \ }
+
+" Markdown live preview
+function! OpenMarkdownPreview() abort
+  if exists('s:markdown_job_id') && s:markdown_job_id > 0
+    call jobstop(s:markdown_job_id)
+    unlet s:markdown_job_id
+  endif
+  let s:markdown_job_id = jobstart('~/.local/bin/grip ' . shellescape(expand('%:p')) . ' :4500')
+  if s:markdown_job_id <= 0 | return | endif
+  call system('open http://localhost:4500')
+endfunction
 " }}}
 
 call plug#end()
