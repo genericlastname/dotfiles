@@ -144,7 +144,6 @@ let g:lightline = {
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'zchee/deoplete-go', { 'do': 'make' }
 let g:go_fmt_fail_silently = 1
 augroup ft_golang
   au!
@@ -153,15 +152,11 @@ augroup ft_golang
 augroup END
 
 " Python
-" Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 augroup ft_python
   au!
   au filetype python setlocal makeprg=python3\ %
-  " au filetype python call deoplete#enable()
 augroup END
-" let g:deoplete#sources#jedi#python_path='python3'
-" let g:deoplete#sources#jedi#show_docstring=0
 
 " HTML/CSS
 Plug 'mattn/emmet-vim'
@@ -175,22 +170,15 @@ augroup END
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'leshill/vim-json'
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 
-augroup ft_js
-  au!
-  " au filetype javascript call deoplete#enable()
-  " au filetype html call deoplete#enable()
-  " au filetype css call deoplete#enable()
-augroup END
-
 " Vimscript
-" Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " C++
-" Plug 'tweekmonster/deoplete-clang2'
 Plug 'octol/vim-cpp-enhanced-highlight'
 augroup ft_cpp
   au!
@@ -200,14 +188,6 @@ augroup END
 " }}}
 " ---Coding Helpers--- {{{
 
-
-" deoplete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } 
-" close preview after completion
-" augroup deoplete_preview
-"   au!
-"   au InsertLeave * if pumvisible() == 0 | pclose | endif
-" augroup END
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
