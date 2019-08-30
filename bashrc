@@ -165,3 +165,7 @@ if [ -f  $PLATFORM ]; then source $PLATFORM; fi
 
 # add npm bin to path
 export PATH=$PATH:$HOME/.npm/bin
+
+# neovim default
+alias vim="nvim"
+alias vi="nvim"
