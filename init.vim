@@ -214,6 +214,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ALE 
 Plug 'w0rp/ale'
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
 let g:ale_linters = {
   \ 'cpp': ['clangtidy'],
   \ 'python': ['flake8', 'pylint'],
