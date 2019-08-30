@@ -152,15 +152,6 @@ augroup ft_golang
   au filetype go nnoremap <silent> <leader>r :GoRun<cr>
 augroup END
 
-" Rust
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer'
-" augroup ft_rust
-"   au!
-"   au Filetype rust nmap gd <Plug>(rust-def-split)
-"   au Filetype rust nnoremap <silent> <leader>r :RustRun<cr>
-" augroup END
-
 " Python
 " Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
