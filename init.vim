@@ -57,6 +57,7 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <leader>bd :BD<cr>
 
 " ALE
+nmap <silent> <leader>aa :ALEDetail<cr>
 nmap <silent> <leader>aj :ALENext<cr>
 nmap <silent> <leader>ak :ALEPrevious<cr>
 
@@ -197,18 +198,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
-
 let g:ale_linters = {
-  \ 'cpp': ['clangtidy'],
+  \ 'cpp': ['ccls', 'clang', 'clangtidy', 'clazy'],
   \ 'python': ['flake8', 'pylint'],
   \ 'javascript': ['eslint'],
   \ 'go': ['gofmt', 'gobuild'],
   \ }
-
 let g:ale_fixers = {
   \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
   \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
   \ }
+let g:ale_cpp_clangtidy_options = '-x c++'
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_lint_on_enter = 1
+let g:ale_echo_msg_format = '[%linter%] %s'
+
 
 " Markdown live preview
 function! OpenMarkdownPreview() abort
@@ -220,11 +224,27 @@ function! OpenMarkdownPreview() abort
   if s:markdown_job_id <= 0 | return | endif
   call system('open http://localhost:4500')
 endfunction
-" }}}
 
 " Neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+imap <M-k> <Plug>(neosnippet_expand_or_jump)
+smap <M-k> <Plug>(neosnippet_expand_or_jump)
+xmap <M-k> <Plug>(neosnippet_expand_target)
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
+" }}}
 
 call plug#end()
 
