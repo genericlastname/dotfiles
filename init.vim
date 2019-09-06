@@ -292,6 +292,8 @@ endfunction
 " add platform specific code for each computer
 call SourceIfExists("$HOME/.config/nvim/platform.vim")
 
+set cindent
+set cinoptions=g-1
 
 " }}}
 
