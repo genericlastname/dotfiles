@@ -61,6 +61,10 @@ nmap <silent> <leader>aa :ALEDetail<cr>
 nmap <silent> <leader>aj :ALENext<cr>
 nmap <silent> <leader>ak :ALEPrevious<cr>
 
+" vim-dispatch
+nmap <silent> <leader>cc :Make<cr>
+nmap <silent> <leader>ca :Make!<cr>
+
 " }}}
 
 
@@ -115,6 +119,9 @@ let g:tmux_navigator_no_mappings = 1
 " bufkill.vim -- so i can close bufs without removing the split
 Plug 'qpkorr/vim-bufkill'
 
+" vim-dispatch -- async make
+Plug 'tpope/vim-dispatch'
+
 " }}}
 " ---UI--- {{{
 
@@ -153,7 +160,7 @@ augroup ft_golang
 augroup END
 
 " Python
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 augroup ft_python
   au!
   au filetype python setlocal makeprg=python3\ %
@@ -177,7 +184,6 @@ Plug 'posva/vim-vue'
 " Vimscript
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 au bufwritepost $MYVIMRC source $MYVIMRC
 
 " C++
