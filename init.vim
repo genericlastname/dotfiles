@@ -160,7 +160,6 @@ augroup ft_golang
 augroup END
 
 " Python
-" Plug 'davidhalter/jedi-vim'
 augroup ft_python
   au!
   au filetype python setlocal makeprg=python3\ %
@@ -262,7 +261,6 @@ call plug#end()
 " basic setups and commands
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set bg=dark
-let g:gruvbox_contrast_light="hard"
 colorscheme badwolf
 set wildmode=longest,list " use more bash-like completion
 set ignorecase
