@@ -94,10 +94,10 @@ Plug 'tpope/vim-vinegar'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 augroup netrw_mapping
     au!
-    au filetype netrw call NetrwMapping()
+    " au filetype netrw call NetrwMapping()
     " stop *.h files from being grayed out
     au filetype netrw setlocal suffixes-=.h
-    au filetype netrw nnoremap <buffer> q :BD<CR>
+    au filetype netrw nnoremap <buffer> Q :bd<CR>
 augroup END
 let g:netrw_localrmdir='rm -r'
 
@@ -151,13 +151,13 @@ let g:lightline = {
 
 
 " Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_fmt_fail_silently = 1
-augroup ft_golang
-  au!
-  au filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
-  au filetype go nnoremap <silent> <leader>r :GoRun<cr>
-augroup END
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" let g:go_fmt_fail_silently = 1
+" augroup ft_golang
+"   au!
+"   au filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
+"   au filetype go nnoremap <silent> <leader>r :GoRun<cr>
+" augroup END
 
 " Python
 augroup ft_python
@@ -212,6 +212,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
   \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
+  \ 'javascript': ['trim_whitespace', 'remove_trailing_lines'],
   \ }
 let g:ale_cpp_clangtidy_options = '-x c++'
 let g:ale_warn_about_trailing_whitespace = 1
@@ -278,7 +279,6 @@ augroup numbers
   au BufLeave,FocusLost,InsertEnter * set norelativenumber
   au TermOpen * set nonumber " turn off line numbers in the term
   au filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-  au filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 set number relativenumber
 
@@ -293,6 +293,7 @@ function! SourceIfExists(file)
     exe 'source' a:file
   endif
 endfunction
+
 " add platform specific code for each computer
 call SourceIfExists("$HOME/.config/nvim/platform.vim")
 
