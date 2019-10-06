@@ -122,6 +122,9 @@ Plug 'qpkorr/vim-bufkill'
 " vim-dispatch -- async make
 Plug 'tpope/vim-dispatch'
 
+" vim-obsession - resurrect old tmux sessions
+Plug 'tpope/vim-obsession'
+
 " }}}
 " ---UI--- {{{
 
@@ -293,12 +296,27 @@ function! SourceIfExists(file)
     exe 'source' a:file
   endif
 endfunction
-
 " add platform specific code for each computer
 call SourceIfExists("$HOME/.config/nvim/platform.vim")
 
 set cindent
 set cinoptions=g-1
+
+" set up sessions to work seamlessly
+let g:sessions_dir = "~/.vim/sessions"
+exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
+exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
+" session freeze
+nnoremap <leader>sf :Obsession<cr>
+function! GetSessionName()
+  if exists('v:this_session') && v:this_session != ''
+    let s:session_string = v:this_session
+    let s:session_parts = split(s:session_string, '/')
+    let s:session_filename = s:session_parts[-1]
+    let s:final = ' ' . s:session_filename . ' '
+    echo s:final
+  endif
+endfunction
 
 " }}}
 
