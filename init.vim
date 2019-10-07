@@ -178,10 +178,8 @@ augroup ft_html
 augroup END
 
 " Javascript
-Plug 'pangloss/vim-javascript'
+Plug 'neoclide/vim-jsx-improve'
 Plug 'leshill/vim-json'
-Plug 'mxw/vim-jsx'
-Plug 'posva/vim-vue'
 
 " Vimscript
 Plug 'Shougo/neco-vim'
