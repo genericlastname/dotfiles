@@ -178,7 +178,8 @@ augroup ft_html
 augroup END
 
 " Javascript
-Plug 'neoclide/vim-jsx-improve'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
 
 " Vimscript
@@ -192,6 +193,11 @@ augroup ft_cpp
   au!
   au filetype c,cpp setlocal commentstring=//\ %s
 augroup END
+
+" Dart/Flutter
+Plug 'dart-lang/dart-vim-plugin'
+let dart_style_guide = 2
+let dart_format_on_save = 1
 
 " }}}
 " ---Coding Helpers--- {{{
