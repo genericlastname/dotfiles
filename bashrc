@@ -169,3 +169,7 @@ export PATH=$PATH:$HOME/.npm/bin
 # neovim default
 alias vim="nvim"
 alias vi="nvim"
+
+# add flutter and dart to path
+export PATH=$PATH:$HOME/bin/flutter/bin
+export PATH=$PATH:$HOME/bin/flutter/bin/cache/dart-sdk/bin
