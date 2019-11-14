@@ -131,7 +131,6 @@ git_branch() {
 # set prompt
 export PS1="\[\e[2m\]\W \$(git_branch)> \[\e[0m\]"
 
-# export PATH=$PATH:/usr/local/go/bin:$HOME/bin:$HOME/.cargo/bin:$GOPATH/bin:
 export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
 
 # add an alias to easily activate python3 venv
@@ -154,8 +153,7 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # golang
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
-PATH=$PATH:$GOPATH:$GOBIN
-export PATH
+export PATH=$PATH:$GOPATH:$GOBIN
 
 # add computer specific config for different builds
 export PLATFORM=$HOME/.config/bash/platform.sh
