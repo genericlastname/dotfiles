@@ -198,6 +198,12 @@ augroup END
 Plug 'dart-lang/dart-vim-plugin'
 let dart_style_guide = 2
 let dart_format_on_save = 1
+augroup ft_dart
+  au!
+  au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
+  au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
+  au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
+augroup end
 
 " }}}
 " ---Coding Helpers--- {{{
