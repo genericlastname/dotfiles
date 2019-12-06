@@ -153,15 +153,6 @@ let g:lightline = {
 " ---Languages--- {{{
 
 
-" Golang
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" let g:go_fmt_fail_silently = 1
-" augroup ft_golang
-"   au!
-"   au filetype go setlocal noet ts=4 sw=4 sts=4 "get go to use tabs
-"   au filetype go nnoremap <silent> <leader>r :GoRun<cr>
-" augroup END
-
 " Python
 augroup ft_python
   au!
@@ -203,6 +194,7 @@ augroup ft_dart
   au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
   au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
   au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
+  au filetype dart setlocal ts=2 sw=2
 augroup end
 
 " }}}
