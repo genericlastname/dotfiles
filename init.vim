@@ -158,6 +158,9 @@ augroup ft_python
   au!
   au filetype python setlocal makeprg=python3\ %
 augroup END
+autocmd filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+autocmd filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+autocmd filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
 " HTML/CSS
 Plug 'mattn/emmet-vim'
@@ -196,6 +199,22 @@ augroup ft_dart
   au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
   au filetype dart setlocal ts=2 sw=2
 augroup end
+
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+au filetype rust nmap gd <Plug>(rust-def)
+au filetype rust nmap gs <Plug>(rust-def-split)
+au filetype rust nmap gv <Plug>(rust-def-vertical)
+au filetype rust nmap gt <Plug>(rust-def-tab)
+au filetype rust nmap <leader>gd <Plug>(rust-doc)
+
+" Markdown
+augroup md_formatting
+    autocmd!
+    au filetype markdown setlocal tw=8
+    au InsertLeave *.md normal gwap<CR>
+augroup END
 
 " }}}
 " ---Coding Helpers--- {{{
@@ -239,15 +258,8 @@ endfunction
 " Neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-imap <M-k> <Plug>(neosnippet_expand_or_jump)
-smap <M-k> <Plug>(neosnippet_expand_or_jump)
-xmap <M-k> <Plug>(neosnippet_expand_target)
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " For conceal markers.
 if has('conceal')
