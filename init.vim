@@ -203,11 +203,13 @@ augroup end
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-au filetype rust nmap gd <Plug>(rust-def)
-au filetype rust nmap gs <Plug>(rust-def-split)
-au filetype rust nmap gv <Plug>(rust-def-vertical)
-au filetype rust nmap gt <Plug>(rust-def-tab)
-au filetype rust nmap <leader>gd <Plug>(rust-doc)
+augroup ft_rust
+  au filetype rust nmap gd <Plug>(rust-def)
+  au filetype rust nmap gs <Plug>(rust-def-split)
+  au filetype rust nmap gv <Plug>(rust-def-vertical)
+  au filetype rust nmap gt <Plug>(rust-def-tab)
+  au filetype rust nmap <leader>gd <Plug>(rust-doc)
+augroup end
 
 " Markdown
 augroup md_formatting
