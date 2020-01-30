@@ -243,18 +243,6 @@ let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_lint_on_enter = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
 
-
-" Markdown live preview
-function! OpenMarkdownPreview() abort
-  if exists('s:markdown_job_id') && s:markdown_job_id > 0
-    call jobstop(s:markdown_job_id)
-    unlet s:markdown_job_id
-  endif
-  let s:markdown_job_id = jobstart('~/.local/bin/grip ' . shellescape(expand('%:p')) . ' :4500')
-  if s:markdown_job_id <= 0 | return | endif
-  call system('open http://localhost:4500')
-endfunction
-
 " Neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
