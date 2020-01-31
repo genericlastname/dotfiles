@@ -307,9 +307,12 @@ set cindent
 set cinoptions=g-1
 
 " set up sessions to work seamlessly
-let g:sessions_dir = "~/.vim/sessions"
-exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
-exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
+" let g:sessions_dir = "~/.vim/sessions"
+" exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
+" exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
+
+nnoremap <leader>ss :Obsess<cr>
+nnoremap <leader>sr :source Session.vim<cr>
 " session freeze
 nnoremap <leader>sf :Obsession<cr>
 function! GetSessionName()
