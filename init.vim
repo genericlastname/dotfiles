@@ -186,6 +186,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 augroup ft_cpp
   au!
   au filetype c,cpp setlocal commentstring=//\ %s
+  au filetype c,cpp setlocal tw=4 sw=4 ts=4 noexpandtab
+  au filetype c,cpp setlocal foldmethod=indent foldnestmax=1
+  au bufreadpre main.c,main.cc,main.cpp setlocal nofoldenable
 augroup END
 
 " Dart/Flutter
