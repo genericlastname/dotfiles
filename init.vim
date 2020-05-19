@@ -7,9 +7,6 @@
 " VIM {{{
 
 
-" map escape to exit term-mode
-tnoremap <esc> <C-\><C-n>
-
 " bang to instant execute
 nnoremap ! :!
 
@@ -107,7 +104,7 @@ Plug 'tpope/vim-unimpaired'
 " Fzf and fzf.vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let g:fzf_layout = { 'down': '~15%' }
+let g:fzf_layout = { 'down': '25%' }
 
 " Auto Pairs
 Plug 'jiangmiao/auto-pairs'
@@ -217,8 +214,7 @@ augroup end
 " Markdown
 augroup md_formatting
     autocmd!
-    au filetype markdown setlocal tw=8
-    au InsertLeave *.md normal gwap<CR>
+    au filetype markdown setlocal tw=80
 augroup END
 
 " }}}
@@ -251,8 +247,8 @@ let g:ale_echo_msg_format = '[%linter%] %s'
 " Neosnippet
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+"                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " For conceal markers.
 if has('conceal')
@@ -307,7 +303,7 @@ endfunction
 call SourceIfExists("$HOME/.config/nvim/platform.vim")
 
 set cindent
-set cinoptions=g-1
+set cinoptions=g-1,L-0.5
 
 " set up sessions to work seamlessly
 " let g:sessions_dir = "~/.vim/sessions"
@@ -328,6 +324,9 @@ function! GetSessionName()
   endif
 endfunction
 
+set updatetime=300
+au CursorHold * sil call CocActionAsync('highlight')
+au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 " }}}
 
 " # vim: set foldmethod=marker:
