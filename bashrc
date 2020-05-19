@@ -131,7 +131,7 @@ git_branch() {
 # set prompt
 export PS1="\[\e[2m\]\W \$(git_branch)> \[\e[0m\]"
 
-export PATH=$HOME/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
 
 # add an alias to easily activate python3 venv
 alias pyactivate=". ./.venv/bin/activate"
@@ -140,9 +140,6 @@ alias pyactivate=". ./.venv/bin/activate"
 alias tnew="tmux new -s"
 alias tattach="tmux attach -t"
 alias tswitch="tmux switch -t"
-
-# show dirs first
-alias ls='ls --color -h --group-directories-first'
 
 # make fzf ignore files in '.gitignore' by using `fd` instead of `find`
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -169,5 +166,8 @@ alias vim="nvim"
 alias vi="nvim"
 
 # add flutter and dart to path
-export PATH=$PATH:$HOME/bin/flutter/bin
-export PATH=$PATH:$HOME/bin/flutter/bin/cache/dart-sdk/bin
+export PATH=$PATH:$HOME/.bin/flutter/bin
+export PATH=$PATH:$HOME/.bin/flutter/bin/cache/dart-sdk/bin
+
+# custom ls
+alias ls='LC_ALL=C ls --color -h --group-directories-first'
