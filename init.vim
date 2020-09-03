@@ -59,9 +59,8 @@ nmap <silent> <leader>aj :ALENext<cr>
 nmap <silent> <leader>ak :ALEPrevious<cr>
 
 " vim-dispatch
-nmap <silent> <leader>cc :Make<cr>
-nmap <silent> <leader>ca :Make!<cr>
-
+nmap <silent> <leader>mm :Make<cr>
+nmap <silent> <leader>ms :Make!<cr>
 " }}}
 
 
@@ -159,7 +158,7 @@ autocmd filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
 autocmd filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
 autocmd filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
-" HTML/CSS
+" " HTML/CSS
 Plug 'mattn/emmet-vim'
 augroup ft_html
   au!
@@ -168,14 +167,14 @@ augroup ft_html
   au filetype css setlocal tabstop=4
 augroup END
 
-" Javascript
+" " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
 
 " Vimscript
 Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
+" Plug 'neoclide/coc-neco'
 au bufwritepost $MYVIMRC source $MYVIMRC
 
 " C++
@@ -183,8 +182,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 augroup ft_cpp
   au!
   au filetype c,cpp setlocal commentstring=//\ %s
-  au filetype c,cpp setlocal tw=4 sw=4 ts=4 noexpandtab
-  au filetype c,cpp setlocal foldmethod=indent foldnestmax=1
+  " au filetype c,cpp setlocal tw=4 sw=4 ts=4 noexpandtab
+  au filetype c,cpp setlocal ts=8 sts=0 expandtab sw=2 smarttab
+  " au filetype c,cpp setlocal foldmethod=indent foldnestmax=1
   au bufreadpre main.c,main.cc,main.cpp setlocal nofoldenable
 augroup END
 
@@ -289,7 +289,7 @@ augroup END
 set number relativenumber
 
 augroup jj_timing
-  au InsertEnter * set timeoutlen=200
+  au InsertEnter * set timeoutlen=500
   au InsertLeave * set timeoutlen=1000
 augroup END
 
@@ -303,30 +303,30 @@ endfunction
 call SourceIfExists("$HOME/.config/nvim/platform.vim")
 
 set cindent
-set cinoptions=g-1,L-0.5
+set cinoptions=g1,L-0.5,N-s
 
 " set up sessions to work seamlessly
-" let g:sessions_dir = "~/.vim/sessions"
-" exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
-" exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
+let g:sessions_dir = "~/.config/nvim/sessions"
+exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
+exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
-nnoremap <leader>ss :Obsess<cr>
-nnoremap <leader>sr :source Session.vim<cr>
-" session freeze
-nnoremap <leader>sf :Obsession<cr>
-function! GetSessionName()
-  if exists('v:this_session') && v:this_session != ''
-    let s:session_string = v:this_session
-    let s:session_parts = split(s:session_string, '/')
-    let s:session_filename = s:session_parts[-1]
-    let s:final = ' ' . s:session_filename . ' '
-    echo s:final
-  endif
-endfunction
+" nnoremap <leader>ss :Obsess<cr>
+" nnoremap <leader>sr :source Session.vim<cr>
+" " session freeze
+" nnoremap <leader>sf :Obsession<cr>
+" function! GetSessionName()
+"   if exists('v:this_session') && v:this_session != ''
+"     let s:session_string = v:this_session
+"     let s:session_parts = split(s:session_string, '/')
+"     let s:session_filename = s:session_parts[-1]
+"     let s:final = ' ' . s:session_filename . ' '
+"     echo s:final
+"   endif
+" endfunction
 
 set updatetime=300
-au CursorHold * sil call CocActionAsync('highlight')
-au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+" au CursorHold * sil call CocActionAsync('highlight')
+" au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 " }}}
 
 " # vim: set foldmethod=marker:

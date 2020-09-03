@@ -1,4 +1,4 @@
 {
   "coc.preferences.diagnostic.enable": false,
-  "suggest.snippetIndicator": " [SNIP]",
+  "suggest.snippetIndicator": "[SNIP],"
 }
