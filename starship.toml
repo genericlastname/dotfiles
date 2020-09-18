@@ -1,0 +1,63 @@
+[aws]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[character]
+style_success = "bold fg:white bg:#0085de"
+style_failure = "bold fg:white bg:red"
+symbol = ">>"
+
+[crystal]
+disabled = true
+
+[directory]
+truncate_to_repo = true
+style = "bold fg:white"
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[git_branch]
+style="bold italic fg:#0085de"
+
+[git_status]
+style = "bold grey"
+
+[julia]
+disabled = true
+
+[nim]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[php]
+disabled = true
+
+[python]
+symbol = " "
+pyenv_version_name = true
+
+[terraform]
+disabled = true
+
+[zig]
+disabled = true
+
+[purescript]
+disabled = true
