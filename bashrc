@@ -128,8 +128,8 @@ git_branch() {
         gb | sed 's/()//'
 }
 
-# set prompt
-export PS1="\[\e[2m\]\W \$(git_branch)> \[\e[0m\]"
+# set prompt -- OUTDATED, see starship.rs
+# export PS1="\[\e[2m\]\W \$(git_branch)> \[\e[0m\]"
 
 export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
 
@@ -171,3 +171,6 @@ export PATH=$PATH:$HOME/.bin/flutter/bin/cache/dart-sdk/bin
 
 # custom ls
 alias ls='LC_ALL=C ls --color -h --group-directories-first'
+
+# starship.rs prompt
+ eval "$(starship init bash)"
