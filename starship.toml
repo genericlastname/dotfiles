@@ -32,7 +32,7 @@ disabled = true
 style="bold italic fg:#0085de"
 
 [git_status]
-style = "bold grey"
+style = "bold #b5b5b5"
 
 [julia]
 disabled = true
@@ -50,14 +50,13 @@ disabled = true
 disabled = true
 
 [python]
-symbol = " "
-pyenv_version_name = true
+symbol = "  "
+
+[purescript]
+disabled = true
 
 [terraform]
 disabled = true
 
 [zig]
-disabled = true
-
-[purescript]
 disabled = true
