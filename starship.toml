@@ -50,7 +50,7 @@ disabled = true
 disabled = true
 
 [python]
-symbol = "  "
+symbol = " "
 
 [purescript]
 disabled = true
