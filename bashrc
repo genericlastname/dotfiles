@@ -173,4 +173,4 @@ export PATH=$PATH:$HOME/.bin/flutter/bin/cache/dart-sdk/bin
 alias ls='LC_ALL=C ls --color -h --group-directories-first'
 
 # starship.rs prompt
- eval "$(starship init bash)"
+ # eval "$(starship init bash)"
