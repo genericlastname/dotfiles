@@ -88,6 +88,7 @@ Plug 'tpope/vim-commentary'
 " vinegar
 Plug 'tpope/vim-vinegar'
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_localrmdir='rm -r'
 augroup netrw_mapping
     au!
     " au filetype netrw call NetrwMapping()
@@ -95,7 +96,6 @@ augroup netrw_mapping
     au filetype netrw setlocal suffixes-=.h
     au filetype netrw nnoremap <buffer> Q :bd<CR>
 augroup END
-let g:netrw_localrmdir='rm -r'
 
 " Unimpaired
 Plug 'tpope/vim-unimpaired'
@@ -153,12 +153,12 @@ let g:lightline = {
 augroup ft_python
   au!
   au filetype python setlocal makeprg=python3\ %
+  au filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+  au filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+  au filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 augroup END
-autocmd filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-autocmd filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-autocmd filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 
-" " HTML/CSS
+" HTML/CSS
 Plug 'mattn/emmet-vim'
 augroup ft_html
   au!
@@ -167,23 +167,27 @@ augroup ft_html
   au filetype css setlocal tabstop=4
 augroup END
 
-" " Javascript
+" Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
 
 " Vimscript
 Plug 'Shougo/neco-vim'
-" Plug 'neoclide/coc-neco'
-au bufwritepost $MYVIMRC source $MYVIMRC
+Plug 'neoclide/coc-neco'
+augroup ft_vim
+  au!
+  au bufwritepost $MYVIMRC source $MYVIMRC
+augroup END
 
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 augroup ft_cpp
   au!
   au filetype c,cpp setlocal commentstring=//\ %s
+  au filetype c,cpp setlocal tw=4 sw=4 ts=4 sts=4 expandtab
   " au filetype c,cpp setlocal tw=4 sw=4 ts=4 noexpandtab
-  au filetype c,cpp setlocal ts=8 sts=0 expandtab sw=2 smarttab
+  " au filetype c,cpp setlocal ts=8 sts=0 expandtab sw=2 smarttab
   " au filetype c,cpp setlocal foldmethod=indent foldnestmax=1
   au bufreadpre main.c,main.cc,main.cpp setlocal nofoldenable
 augroup END
@@ -204,6 +208,7 @@ augroup end
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 augroup ft_rust
+  au!
   au filetype rust nmap gd <Plug>(rust-def)
   au filetype rust nmap gs <Plug>(rust-def-split)
   au filetype rust nmap gv <Plug>(rust-def-vertical)
@@ -212,9 +217,15 @@ augroup ft_rust
 augroup end
 
 " Markdown
-augroup md_formatting
-    autocmd!
-    au filetype markdown setlocal tw=80
+augroup ft_markdown
+  au!
+  au filetype markdown setlocal tw=80
+augroup END
+
+" Makefile
+augroup ft_make
+  au!
+  au filetype make set noexpandtab sw=8 sts=0
 augroup END
 
 " }}}
