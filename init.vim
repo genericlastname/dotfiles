@@ -50,9 +50,6 @@ nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 
-" bufkill.vim
-nnoremap <silent> <leader>bd :BD<cr>
-
 " ALE
 nmap <silent> <leader>aa :ALEDetail<cr>
 nmap <silent> <leader>aj :ALENext<cr>
@@ -233,7 +230,7 @@ augroup END
 
 
 " coc.nvim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ALE 
 Plug 'w0rp/ale'
@@ -338,6 +335,22 @@ exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 set updatetime=300
 " au CursorHold * sil call CocActionAsync('highlight')
 " au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
+" }}}
+" ---WORK--- {{{
+
+
+source /usr/share/vim/google/glug/bootstrap.vim
+Glug piper plugin[mappings]
+Glug youcompleteme-google
+let g:ycm_autoclose_preview_window_after_completion = 1
+Glug syntastic-google
+Glug codefmt
+Glug codefmt-google
+Glug codefmt
+Glug blaze plugin[mappings]
+
+" bufkill.vim
+" nmap <silent> <leader>bd :BD<cr>
 " }}}
 
 " # vim: set foldmethod=marker:
