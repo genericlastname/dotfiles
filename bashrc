@@ -137,9 +137,9 @@ export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
 alias pyactivate=". ./.venv/bin/activate"
 
 # add aliases for tmux
-alias tnew="tmux new -s"
-alias tattach="tmux attach -t"
-alias tswitch="tmux switch -t"
+alias tnew="tmx2 new -s"
+alias tattach="tmx2 attach -t"
+alias tswitch="tmx2 switch -t"
 
 # make fzf ignore files in '.gitignore' by using `fd` instead of `find`
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -148,29 +148,29 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # golang
-export GOPATH=$HOME/.go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH:$GOBIN
+# export GOPATH=$HOME/.go
+# export GOBIN=$GOPATH/bin
+# export PATH=$PATH:$GOPATH:$GOBIN
 
 # add computer specific config for different builds
-export PLATFORM=$HOME/.config/bash/platform.sh
-if [ -f  $PLATFORM ]; then source $PLATFORM; fi
+#export PLATFORM=$HOME/.config/bash/platform.sh
+#if [ -f  $PLATFORM ]; then source $PLATFORM; fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # add npm bin to path
-export PATH=$PATH:$HOME/.npm/bin
+# export PATH=$PATH:$HOME/.npm/bin
 
 # neovim default
 alias vim="nvim"
 alias vi="nvim"
 
 # add flutter and dart to path
-export PATH=$PATH:$HOME/.bin/flutter/bin
-export PATH=$PATH:$HOME/.bin/flutter/bin/cache/dart-sdk/bin
+# export PATH=$PATH:$HOME/.bin/flutter/bin
+# export PATH=$PATH:$HOME/.bin/flutter/bin/cache/dart-sdk/bin
 
 # custom ls
 alias ls='LC_ALL=C ls --color -h --group-directories-first'
 
 # starship.rs prompt
- eval "$(starship init bash)"
+eval "$(starship init bash)"
