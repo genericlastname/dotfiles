@@ -7,6 +7,9 @@
 " VIM {{{
 
 
+" set leader
+let mapleader = ","
+
 " bang to instant execute
 nnoremap ! :!
 
@@ -18,7 +21,7 @@ nnoremap <C-k> O<Esc>j
 inoremap jj <Esc>
 
 " clear search when pressing enter
-nnoremap <silent> <CR> :nohl<return>
+nnoremap <silent> <cr> :nohl<cr>
 
 " window switching keys
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -30,11 +33,11 @@ inoremap <A-j> <C-\><C-N><C-w>j
 inoremap <A-k> <C-\><C-N><C-w>k
 inoremap <A-l> <C-\><C-N><C-w>l
 
-" set leader
-let mapleader = ","
-
 " map <C-e> to jump to end of line in insert mode
 inoremap <C-e> <C-o>$
+
+" map <leader>l to toggle relative line numbers
+nnoremap <silent> <leader>l :set relativenumber!<cr>
 
 " }}}
 " PLUGINS {{{
@@ -291,7 +294,7 @@ augroup numbers
   au!
   au BufEnter,FocusGained,InsertLeave * set relativenumber
   au BufLeave,FocusLost,InsertEnter * set norelativenumber
-  au TermOpen * set nonumber " turn off line numbers in the term
+  au TermOpen * set nonumber norelativenumber " turn off line numbers in the term
   au filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 augroup END
 set number relativenumber
