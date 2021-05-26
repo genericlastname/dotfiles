@@ -174,3 +174,8 @@ alias ls='LC_ALL=C ls --color -h --group-directories-first'
 
 # starship.rs prompt
 eval "$(starship init bash)"
+
+# add home bin to path
+export PATH=$PATH:$HOME/bin
+
+export WORK=net/model/unm
