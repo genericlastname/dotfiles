@@ -5,9 +5,8 @@ disabled = true
 disabled = true
 
 [character]
-style_success = "bold fg:white bg:#0085de"
-style_failure = "bold fg:white bg:red"
-symbol = ">>"
+success_symbol = "[>>](bold fg:white bg:#0085de)"
+error_symbol = "[>>](bold fg:white bg:red)"
 
 [crystal]
 disabled = true
