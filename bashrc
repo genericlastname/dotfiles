@@ -174,3 +174,5 @@ alias ls='LC_ALL=C ls --color -h --group-directories-first'
 
 # starship.rs prompt
  eval "$(starship init bash)"
+
+. "$HOME/.cargo/env"
