@@ -18,6 +18,7 @@ neovim () {
 
 tmux_setup () {
   ln -s $(pwd)/tmux.conf $home_dir/.tmux.conf
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 git_setup () {
