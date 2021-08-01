@@ -17,7 +17,7 @@ neovim () {
 }
 
 tmux_setup () {
-  ln -s $(pwd)/tmux.conf $home_dir/tmux.conf
+  ln -s $(pwd)/tmux.conf $home_dir/.tmux.conf
 }
 
 git_setup () {
