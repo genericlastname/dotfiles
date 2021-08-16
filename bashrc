@@ -116,6 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+### ===================================
+### START PERSONAL SECTION
+### ===================================
+
+
 # set neovim as editor
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -140,6 +145,7 @@ alias pyactivate=". ./.venv/bin/activate"
 alias tnew="tmux new -s"
 alias tattach="tmux attach -t"
 alias tswitch="tmux switch -t"
+alias tcont="tmux new-session -d"
 
 # make fzf ignore files in '.gitignore' by using `fd` instead of `find`
 export FZF_DEFAULT_COMMAND='fd --type f'
