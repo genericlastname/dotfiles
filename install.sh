@@ -1,11 +1,15 @@
 #!/bin/bash
 
 home_dir=""
+packages=""
 
 ## PACKAGES
-packages () {
-  dnf -y groupinstall "Development Tools"
-  dnf -y install neovim nodejs snapd
+important_packages () {
+  packages=$packages" neovim nodejs snapd"
+}
+
+useful_extra_packages () {
+  packages=$packages" bat starship"
 }
 
 neovim () {
@@ -30,7 +34,6 @@ bash_setup () {
 }
 
 starship_setup () {
-  dnf -y install starship
   ln -s $(pwd)/starship.toml $home_dir/.config/starship.toml
 }
 
@@ -41,8 +44,19 @@ main () {
   read -p "Install development packages? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
-    * ) packages ;;
+    * ) important_packages ;;
   esac
+
+  read -p "Install extra packages? [Y/n] " yn
+  case $yn in
+    [Nn]* ) ;;
+    * ) useful_extra_packages ;;
+  esac
+
+  if [ -z "$packages" ]; then
+    dnf -y groupinstall "Development Tools"
+    dnf -y install $packages
+  fi
 
   read -p "Install neovim config? [Y/n] " yn
   case $yn in
