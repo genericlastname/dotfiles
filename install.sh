@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Elevate permissions
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
 home_dir=""
 packages=""
 
@@ -22,7 +28,7 @@ neovim () {
 
 tmux_setup () {
   ln -s $(pwd)/tmux.conf $home_dir/.tmux.conf
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  git clone https://github.com/tmux-plugins/tpm $home_dir/.tmux/plugins/tpm
 }
 
 git_setup () {
@@ -53,7 +59,7 @@ main () {
     * ) useful_extra_packages ;;
   esac
 
-  if [ -z "$packages" ]; then
+  if [ -n "$packages" ]; then
     dnf -y groupinstall "Development Tools"
     dnf -y install $packages
   fi
@@ -61,31 +67,31 @@ main () {
   read -p "Install neovim config? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
-    * ) neovim ;;
+    * ) neovim; echo Done. ;;
   esac
 
   read -p "Install tmux config? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
-    * ) tmux_setup ;;
+    * ) tmux_setup; echo Done. ;;
   esac
 
   read -p "Install git config? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
-    * ) git_setup ;;
+    * ) git_setup; echo Done. ;;
   esac
 
-  read -p "Install bash config? [Y/n]" yn
+  read -p "Install bash config? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
-    * ) bash_setup ;;
+    * ) bash_setup; echo Done. ;;
   esac
 
-  read -p "Install starship and config? [Y/n]" yn
+  read -p "Install starship config? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
-    * ) starship_setup ;;
+    * ) starship_setup; echo Done. ;;
   esac
 }
 
