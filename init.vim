@@ -249,9 +249,9 @@ let g:ale_linters = {
   \ 'go': ['gofmt', 'gobuild'],
   \ }
 let g:ale_fixers = {
-  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
-  \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
-  \ 'javascript': ['trim_whitespace', 'remove_trailing_lines'],
+  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements'],
+  \ 'go': ['gofmt'],
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ }
 let g:ale_cpp_clangtidy_options = '-x c++'
 let g:ale_warn_about_trailing_whitespace = 1
