@@ -171,8 +171,8 @@ augroup ft_html
 augroup END
 
 " Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'pangloss/vim-javascript'
+" Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
 
 " Vimscript
@@ -196,16 +196,16 @@ augroup ft_cpp
 augroup END
 
 " Dart/Flutter
-Plug 'dart-lang/dart-vim-plugin'
-let dart_style_guide = 2
-let dart_format_on_save = 1
-augroup ft_dart
-  au!
-  au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
-  au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
-  au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
-  au filetype dart setlocal ts=2 sw=2
-augroup end
+" Plug 'dart-lang/dart-vim-plugin'
+" let dart_style_guide = 2
+" let dart_format_on_save = 1
+" augroup ft_dart
+"   au!
+"   au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
+"   au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
+"   au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
+"   au filetype dart setlocal ts=2 sw=2
+" augroup end
 
 " Rust
 Plug 'rust-lang/rust.vim'
