@@ -8,4 +8,4 @@
 [core]
 	excludesfile = /home/kyle/.gitignore_global
 [init]
-	defaultBranch = main
+	defaultBranch = master
