@@ -129,8 +129,8 @@ Plug 'tpope/vim-obsession'
 
 
 " Themes
-Plug 'morhetz/gruvbox'
-Plug 'haishanh/night-owl.vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'haishanh/night-owl.vim'
 Plug 'sjl/badwolf'
 
 " statusline
