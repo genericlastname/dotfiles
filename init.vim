@@ -324,23 +324,7 @@ let g:sessions_dir = "~/.config/nvim/sessions"
 exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
 exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
-" nnoremap <leader>ss :Obsess<cr>
-" nnoremap <leader>sr :source Session.vim<cr>
-" " session freeze
-" nnoremap <leader>sf :Obsession<cr>
-" function! GetSessionName()
-"   if exists('v:this_session') && v:this_session != ''
-"     let s:session_string = v:this_session
-"     let s:session_parts = split(s:session_string, '/')
-"     let s:session_filename = s:session_parts[-1]
-"     let s:final = ' ' . s:session_filename . ' '
-"     echo s:final
-"   endif
-" endfunction
-
 set updatetime=300
-" au CursorHold * sil call CocActionAsync('highlight')
-" au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 " }}}
 
 " # vim: set foldmethod=marker:
