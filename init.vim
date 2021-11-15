@@ -46,6 +46,7 @@ nnoremap <silent> <leader>l :set relativenumber!<cr>
 " Fzf.vim keybindings
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Buffers<cr>
+nnoremap <C-m> :Ag<cr>
 
 " Tmux Navigator
 nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
