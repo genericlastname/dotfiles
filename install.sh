@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Elevate permissions
-if [ $EUID != 0 ]; then
-    sudo "$0" "$@"
-    exit $?
-fi
+#if [ $EUID != 0 ]; then
+#    sudo "$0" "$@"
+#    exit $?
+#fi
 
 home_dir=""
 packages=""
