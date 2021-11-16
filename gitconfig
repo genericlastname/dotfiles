@@ -7,3 +7,5 @@
   st = status
 [core]
 	excludesfile = /home/kyle/.gitignore_global
+[init]
+	defaultBranch = master

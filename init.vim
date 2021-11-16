@@ -46,6 +46,7 @@ nnoremap <silent> <leader>l :set relativenumber!<cr>
 " Fzf.vim keybindings
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Buffers<cr>
+nnoremap <C-m> :Ag<cr>
 
 " Tmux Navigator
 nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
@@ -129,8 +130,8 @@ Plug 'tpope/vim-obsession'
 
 
 " Themes
-Plug 'morhetz/gruvbox'
-Plug 'haishanh/night-owl.vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'haishanh/night-owl.vim'
 Plug 'sjl/badwolf'
 
 " statusline
@@ -171,8 +172,8 @@ augroup ft_html
 augroup END
 
 " Javascript
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'pangloss/vim-javascript'
+" Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leshill/vim-json'
 
 " Vimscript
@@ -196,16 +197,16 @@ augroup ft_cpp
 augroup END
 
 " Dart/Flutter
-Plug 'dart-lang/dart-vim-plugin'
-let dart_style_guide = 2
-let dart_format_on_save = 1
-augroup ft_dart
-  au!
-  au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
-  au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
-  au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
-  au filetype dart setlocal ts=2 sw=2
-augroup end
+" Plug 'dart-lang/dart-vim-plugin'
+" let dart_style_guide = 2
+" let dart_format_on_save = 1
+" augroup ft_dart
+"   au!
+"   au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
+"   au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
+"   au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
+"   au filetype dart setlocal ts=2 sw=2
+" augroup end
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -249,9 +250,9 @@ let g:ale_linters = {
   \ 'go': ['gofmt', 'gobuild'],
   \ }
 let g:ale_fixers = {
-  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements', 'trim_whitespace', 'remove_trailing_lines'],
-  \ 'go': ['gofmt', 'trim_whitespace', 'remove_trailing_lines'],
-  \ 'javascript': ['trim_whitespace', 'remove_trailing_lines'],
+  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements'],
+  \ 'go': ['gofmt'],
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ }
 let g:ale_cpp_clangtidy_options = '-x c++'
 let g:ale_warn_about_trailing_whitespace = 1
@@ -324,23 +325,7 @@ let g:sessions_dir = "~/.config/nvim/sessions"
 exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
 exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
-" nnoremap <leader>ss :Obsess<cr>
-" nnoremap <leader>sr :source Session.vim<cr>
-" " session freeze
-" nnoremap <leader>sf :Obsession<cr>
-" function! GetSessionName()
-"   if exists('v:this_session') && v:this_session != ''
-"     let s:session_string = v:this_session
-"     let s:session_parts = split(s:session_string, '/')
-"     let s:session_filename = s:session_parts[-1]
-"     let s:final = ' ' . s:session_filename . ' '
-"     echo s:final
-"   endif
-" endfunction
-
 set updatetime=300
-" au CursorHold * sil call CocActionAsync('highlight')
-" au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 " }}}
 
 " # vim: set foldmethod=marker:

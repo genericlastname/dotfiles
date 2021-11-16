@@ -36,6 +36,7 @@ git_setup () {
 }
 
 bash_setup () {
+  mv $home_dir/.bashrc $home_dir/.bashrc.old
   ln -s $(pwd)/bashrc $home_dir/.bashrc
 }
 
