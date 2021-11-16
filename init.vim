@@ -224,6 +224,7 @@ augroup end
 augroup ft_markdown
   au!
   au filetype markdown setlocal tw=80
+  au filetype markdown let b:coc_suggest_disable = 1
 augroup END
 
 " Makefile
