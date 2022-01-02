@@ -46,7 +46,7 @@ nnoremap <silent> <leader>l :set relativenumber!<cr>
 " Fzf.vim keybindings
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Buffers<cr>
-nnoremap <C-m> :Ag<cr>
+nnoremap <C-b> :Ag<cr>
 
 " Tmux Navigator
 nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
@@ -218,6 +218,8 @@ augroup ft_rust
   au filetype rust nmap gv <Plug>(rust-def-vertical)
   au filetype rust nmap gt <Plug>(rust-def-tab)
   au filetype rust nmap <leader>gd <Plug>(rust-doc)
+  au filetype rust setlocal foldmethod=syntax
+  au filetype rust setlocal foldnestmax=1
 augroup end
 
 " Markdown
@@ -232,6 +234,22 @@ augroup ft_make
   au!
   au filetype make set noexpandtab sw=8 sts=0
 augroup END
+
+" Lisp
+Plug 'vlime/vlime', {'rtp': 'vim/'}
+augroup ft_lisp
+  au!
+  au filetype lisp set completeopt=longest,menuone
+  au filetype lisp inoremap <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  au filetype lisp inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+augroup END
+" inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+"   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" uxntal
+Plug 'karolbelina/uxntal.vim'
+
 
 " }}}
 " ---Coding Helpers--- {{{
