@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Elevate permissions
-#if [ $EUID != 0 ]; then
-#    sudo "$0" "$@"
-#    exit $?
-#fi
-
 home_dir=""
 packages=""
 
@@ -22,7 +16,8 @@ neovim () {
   mkdir -p $home_dir/.config/nvim
   ln -s $(pwd)/init.vim $home_dir/.config/nvim/init.vim
   ln -s $(pwd)/coc-settings.json $home_dir/.config/nvim/coc-settings.json
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+         --create-dirs \
          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' &> /dev/null
 }
 
@@ -61,8 +56,8 @@ main () {
   esac
 
   if [ -n "$packages" ]; then
-    dnf -y groupinstall "Development Tools"
-    dnf -y install $packages
+    sudo dnf -y groupinstall "Development Tools"
+    sudo dnf -y install $packages
   fi
 
   read -p "Install neovim config? [Y/n] " yn
