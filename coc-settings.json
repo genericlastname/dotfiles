@@ -1,4 +1,10 @@
 {
   "coc.preferences.diagnostic.enable": false,
-  "suggest.snippetIndicator": "[SNIP],"
+  "suggest.snippetIndicator": "[SNIP],",
+  "lisp.enabled": true,
+  "lisp.serverPath": "cl-lsp",
+  "lisp.serverArguments": [],
+  "lisp.toolchain": "",
+  "lisp.maxNumberOfProblems": 100,
+  "lisp.trace.server": ""
 }
