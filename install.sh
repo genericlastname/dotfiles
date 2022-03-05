@@ -13,7 +13,7 @@ useful_extra_packages () {
 }
 
 neovim () {
-  mkdir -p $home_dir/.config/nvim
+  mkdir -p $home_dir/.config/nvim/sessions
   ln -s $(pwd)/init.vim $home_dir/.config/nvim/init.vim
   ln -s $(pwd)/coc-settings.json $home_dir/.config/nvim/coc-settings.json
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
