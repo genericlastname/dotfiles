@@ -60,6 +60,8 @@ main () {
     sudo dnf -y install $packages
   fi
 
+  echo "Packages installed."
+
   read -p "Install neovim config? [Y/n] " yn
   case $yn in
     [Nn]* ) ;;
