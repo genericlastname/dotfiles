@@ -47,6 +47,7 @@ nnoremap <silent> <leader>l :set relativenumber!<cr>
 nnoremap <C-p> :Files<cr>
 nnoremap <C-l> :Buffers<cr>
 nnoremap <C-b> :Ag<cr>
+nnoremap <C-t> :Tags<cr>
 
 " Tmux Navigator
 nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
@@ -172,8 +173,8 @@ augroup ft_html
 augroup END
 
 " Javascript
-" Plug 'pangloss/vim-javascript'
-" Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'leshill/vim-json'
 
 " Vimscript
@@ -284,10 +285,17 @@ Plug 'Shougo/neosnippet-snippets'
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
 "                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" Gutentags
+Plug 'ludovicchabant/vim-gutentags'
+" let g:gutentags_generate_on_new = 1
+" let g:gutentags_generate_on_missing = 1
+" let g:gutentags_generate_on_write = 1
+" let g:gutentags_generate_on_empty_buffer = 0
+
+" " For conceal markers.
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 
 " }}}
