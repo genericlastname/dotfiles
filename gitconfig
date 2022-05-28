@@ -6,6 +6,6 @@
 	co = checkout
   st = status
 [core]
-	excludesfile = /home/kyle/.gitignore_global
+	excludesFile = /home/kyle/.gitignore
 [init]
 	defaultBranch = master
