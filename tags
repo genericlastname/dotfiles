@@ -1,0 +1,86 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/hiroantag/projects/dotfiles/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$NVIM_TUI_ENABLE_TRUE_COLOR	init.vim	/^let $NVIM_TUI_ENABLE_TRUE_COLOR=1$/;"	v
+<A-h>	init.vim	/^inoremap <A-h> <C-\\><C-N><C-w>h$/;"	m
+<A-h>	init.vim	/^nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>$/;"	m
+<A-j>	init.vim	/^inoremap <A-j> <C-\\><C-N><C-w>j$/;"	m
+<A-j>	init.vim	/^nnoremap <silent> <A-j> :TmuxNavigateDown<cr>$/;"	m
+<A-k>	init.vim	/^inoremap <A-k> <C-\\><C-N><C-w>k$/;"	m
+<A-k>	init.vim	/^nnoremap <silent> <A-k> :TmuxNavigateUp<cr>$/;"	m
+<A-l>	init.vim	/^inoremap <A-l> <C-\\><C-N><C-w>l$/;"	m
+<A-l>	init.vim	/^nnoremap <silent> <A-l> :TmuxNavigateRight<cr>$/;"	m
+<C-b>	init.vim	/^nnoremap <C-b> :Ag<cr>$/;"	m
+<C-e>	init.vim	/^inoremap <C-e> <C-o>\$$/;"	m
+<C-j>	init.vim	/^nnoremap <C-j> o<Esc>k$/;"	m
+<C-k>	init.vim	/^nnoremap <C-k> O<Esc>j$/;"	m
+<C-l>	init.vim	/^nnoremap <C-l> :Buffers<cr>$/;"	m
+<C-p>	init.vim	/^nnoremap <C-p> :Files<cr>$/;"	m
+<C-t>	init.vim	/^nnoremap <C-t> :Tags<cr>$/;"	m
+<cr>	init.vim	/^nnoremap <silent> <cr> :nohl<cr>$/;"	m
+<leader>aa	init.vim	/^nmap <silent> <leader>aa :ALEDetail<cr>$/;"	m
+<leader>aj	init.vim	/^nmap <silent> <leader>aj :ALENext<cr>$/;"	m
+<leader>ak	init.vim	/^nmap <silent> <leader>ak :ALEPrevious<cr>$/;"	m
+<leader>bd	init.vim	/^nnoremap <silent> <leader>bd :BD<cr>$/;"	m
+<leader>l	init.vim	/^nnoremap <silent> <leader>l :set relativenumber!<cr>$/;"	m
+<leader>mm	init.vim	/^nmap <silent> <leader>mm :Make<cr>$/;"	m
+<leader>ms	init.vim	/^nmap <silent> <leader>ms :Make!<cr>$/;"	m
+SourceIfExists	init.vim	/^function! SourceIfExists(file)$/;"	f
+\x21	init.vim	/^nnoremap ! :!$/;"	m
+bash_setup	install.sh	/^bash_setup () {$/;"	f
+coc.preferences.diagnostic.enable	coc-settings.json	/^  "coc.preferences.diagnostic.enable": false,$/;"	b
+ft_cpp	init.vim	/^augroup ft_cpp$/;"	a
+ft_html	init.vim	/^augroup ft_html$/;"	a
+ft_lisp	init.vim	/^augroup ft_lisp$/;"	a
+ft_make	init.vim	/^augroup ft_make$/;"	a
+ft_markdown	init.vim	/^augroup ft_markdown$/;"	a
+ft_python	init.vim	/^augroup ft_python$/;"	a
+ft_rust	init.vim	/^augroup ft_rust$/;"	a
+ft_vim	init.vim	/^augroup ft_vim$/;"	a
+g:ale_cpp_clangtidy_options	init.vim	/^let g:ale_cpp_clangtidy_options = '-x c++'$/;"	v
+g:ale_echo_msg_format	init.vim	/^let g:ale_echo_msg_format = '[%linter%] %s'$/;"	v
+g:ale_fixers	init.vim	/^let g:ale_fixers = {$/;"	v
+g:ale_lint_on_enter	init.vim	/^let g:ale_lint_on_enter = 1$/;"	v
+g:ale_linters	init.vim	/^let g:ale_linters = {$/;"	v
+g:ale_sign_error	init.vim	/^let g:ale_sign_error = '⤫'$/;"	v
+g:ale_sign_warning	init.vim	/^let g:ale_sign_warning = '⚠'$/;"	v
+g:ale_warn_about_trailing_whitespace	init.vim	/^let g:ale_warn_about_trailing_whitespace = 1$/;"	v
+g:fzf_layout	init.vim	/^let g:fzf_layout = { 'down': '25%' }$/;"	v
+g:lightline	init.vim	/^let g:lightline = {$/;"	v
+g:monochrome_italic_comments	init.vim	/^let g:monochrome_italic_comments = 1$/;"	v
+g:netrw_list_hide	init.vim	/^let g:netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+'$/;"	v
+g:netrw_localrmdir	init.vim	/^let g:netrw_localrmdir='rm -r'$/;"	v
+g:sessions_dir	init.vim	/^let g:sessions_dir = "~\/.config\/nvim\/sessions"$/;"	v
+g:tmux_navigator_no_mappings	init.vim	/^let g:tmux_navigator_no_mappings = 1$/;"	v
+git_setup	install.sh	/^git_setup () {$/;"	f
+important_packages	install.sh	/^important_packages () {$/;"	f
+is_vim	tmux.conf	/^is_vim="ps -o state= -o comm= -t '#{pane_tty}' \\$/;"	k
+jj	init.vim	/^inoremap jj <Esc>$/;"	m
+jj_timing	init.vim	/^augroup jj_timing$/;"	a
+lisp.enabled	coc-settings.json	/^  "lisp.enabled": true,$/;"	b
+lisp.maxNumberOfProblems	coc-settings.json	/^  "lisp.maxNumberOfProblems": 100,$/;"	n
+lisp.serverArguments	coc-settings.json	/^  "lisp.serverArguments": [],$/;"	a
+lisp.serverPath	coc-settings.json	/^  "lisp.serverPath": "cl-lsp",$/;"	s
+lisp.toolchain	coc-settings.json	/^  "lisp.toolchain": "",$/;"	s
+lisp.trace.server	coc-settings.json	/^  "lisp.trace.server": ""$/;"	s
+main	install.sh	/^main () {$/;"	f
+mapleader	init.vim	/^let mapleader = ","$/;"	v
+neovim	install.sh	/^neovim () {$/;"	f
+netrw_mapping	init.vim	/^augroup netrw_mapping$/;"	a
+numbers	init.vim	/^augroup numbers$/;"	a
+starship_setup	install.sh	/^starship_setup () {$/;"	f
+style fg	tmux.conf	/^set -g pane-active-border-style fg=colour42$/;"	k
+style fg	tmux.conf	/^set -g status-style fg=white,bg=colour241$/;"	k
+style fg	tmux.conf	/^set -g window-status-current-style fg=colour249,bg=colour237,bold$/;"	k
+style fg	tmux.conf	/^set -g window-status-style fg=colour236,bg=colour241$/;"	k
+suggest.snippetIndicator	coc-settings.json	/^  "suggest.snippetIndicator": "[SNIP],",$/;"	s
+tmux_setup	install.sh	/^tmux_setup () {$/;"	f
+useful_extra_packages	install.sh	/^useful_extra_packages () {$/;"	f
