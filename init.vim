@@ -251,6 +251,10 @@ augroup END
 " uxntal
 Plug 'karolbelina/uxntal.vim'
 
+" gemtext
+Plug 'SuneelFreimuth/vim-gemtext'
+
+
 
 " }}}
 " ---Coding Helpers--- {{{
