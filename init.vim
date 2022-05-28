@@ -287,9 +287,20 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
-" let g:gutentags_generate_on_new = 1
-" let g:gutentags_generate_on_missing = 1
-" let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_new = 0
+let g:gutentags_generate_on_missing = 0
+let g:gutentags_generate_on_write = 0
+let g:gutentags_ctags_tagfile = '.tags'
+" let g:gutentags_ctags_exclude = [ \
+"   '.git', '.svg', '.hg', \
+"   '/tests/', 'build', 'dist', 'sites//files/', 'bin', 'node_modules', 'cache',
+"   'compiled', 'docs', 'example', 'bundle', 'vendor', '.md', '-lock.json', '.lock', \
+"   'bundle.js', 'build.js', '.rc', '.json', '.min.', '.map', '.bak', '.zip', \
+"   '.pyc', '.class', '.sln', '.Master', '.csproj', '.tmp', '.csproj.user', '.cache', \
+"   '.pdb', 'tags', 'cscope.', '.css', '.less', '.scss', '.exe', '.dll', \
+"   '.mp3', '.ogg', '.flac', '.swp', '.swo', '.bmp', '.gif', '.ico', '.jpg', '.png', \
+"   '.rar', '.zip', '.tar', '.tar.gz', '.tar.xz', '.tar.bz2', \
+"   '.pdf', '.doc', '.docx', '.ppt', '.pptx']
 " let g:gutentags_generate_on_empty_buffer = 0
 
 " " For conceal markers.
@@ -297,6 +308,44 @@ Plug 'ludovicchabant/vim-gutentags'
 "   set conceallevel=2 concealcursor=niv
 " endif
 
+
+" }}}
+" ---Writing--- {{{
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+
+let w:ProseModeOn = 0
+
+function EnableProseMode()
+    setlocal spell spelllang=en_us
+    Goyo 66
+    SoftPencil
+    set nonumber norelativenumber
+    echo "Prose Mode On"
+endfu
+
+function DisableProseMode()
+    Goyo!
+    NoPencil
+    setlocal nospell
+    set number relativenumber
+    echo "Prose Mode Off"
+endfu
+
+function ToggleProseMode()
+    if w:ProseModeOn == 0
+        call EnableProseMode()
+        let w:ProseModeOn = 1
+    else
+        call DisableProseMode()
+    endif
+endfu
+
+command Prose call EnableProseMode()
+command UnProse call DisableProseMode()
+command ToggleProse call ToggleProseMode()
+
+nnoremap <leader>pp :call ToggleProseMode()<cr>
 
 " }}}
 
