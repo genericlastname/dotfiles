@@ -324,6 +324,11 @@ function EnableProseMode()
     setlocal spell spelllang=en_us
     Goyo 66
     SoftPencil
+  augroup numbers
+    au!
+    au BufEnter,FocusGained,InsertLeave,BufLeave,FocusLost,InsertEnter * set norelativenumber
+    au TermOpen * set nonumber norelativenumber " turn off line numbers in the term
+  augroup END
     set nonumber norelativenumber
     echo "Prose Mode On"
 endfu
@@ -332,6 +337,13 @@ function DisableProseMode()
     Goyo!
     NoPencil
     setlocal nospell
+    augroup numbers
+      au!
+      au BufEnter,FocusGained,InsertLeave * set relativenumber
+      au BufLeave,FocusLost,InsertEnter * set norelativenumber
+      au TermOpen * set nonumber norelativenumber " turn off line numbers in the term
+      au filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    augroup END
     set number relativenumber
     echo "Prose Mode Off"
 endfu
