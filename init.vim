@@ -220,7 +220,7 @@ augroup ft_rust
   au filetype rust nmap gt <Plug>(rust-def-tab)
   au filetype rust nmap <leader>gd <Plug>(rust-doc)
   au filetype rust setlocal foldmethod=syntax
-  au filetype rust setlocal foldnestmax=1
+  " au filetype rust setlocal foldnestmax=2
 augroup end
 
 " Markdown
@@ -418,6 +418,8 @@ exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
 exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
 set updatetime=300
+
+
 " }}}
 
 " # vim: set foldmethod=marker:
