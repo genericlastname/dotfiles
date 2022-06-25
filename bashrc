@@ -121,7 +121,7 @@ fi
 ### ===================================
 
 # set PATH
-export PATH=$HOME/bin:$HOME/.cargo/bin:$GOPATH:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$HOME/.local/bin/flutter/bin/cache/dart-sdk/bin:$PATH
+export PATH=$HOME/bin:$HOME/.cargo/bin:$GOPATH:$HOME/.local/bin:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$HOME/.local/bin/flutter/bin/cache/dart-sdk/bin:$PATH
 
 # set neovim as editor
 export VISUAL=nvim
