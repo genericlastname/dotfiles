@@ -419,6 +419,8 @@ exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
 set updatetime=300
 
+" stop git commit messages from indenting line wraps within parens
+au FileType gitcommit set nosmartindent nocindent
 
 " }}}
 
