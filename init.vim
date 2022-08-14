@@ -198,20 +198,19 @@ augroup ft_cpp
 augroup END
 
 " Dart/Flutter
-" Plug 'dart-lang/dart-vim-plugin'
-" let dart_style_guide = 2
-" let dart_format_on_save = 1
-" augroup ft_dart
-"   au!
-"   au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
-"   au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
-"   au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
-"   au filetype dart setlocal ts=2 sw=2
-" augroup end
+Plug 'dart-lang/dart-vim-plugin'
+let dart_style_guide = 2
+let dart_format_on_save = 1
+augroup ft_dart
+  au!
+  au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
+  au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
+  au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
+  au filetype dart setlocal ts=2 sw=2
+augroup end
 
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 augroup ft_rust
   au!
   au filetype rust nmap gd <Plug>(rust-def)
@@ -221,6 +220,7 @@ augroup ft_rust
   au filetype rust nmap <leader>gd <Plug>(rust-doc)
   au filetype rust setlocal foldmethod=syntax
   " au filetype rust setlocal foldnestmax=2
+  au filetype rust exec 'nmap <leader>rc :CocCommand<cr>rust '
 augroup end
 
 " Markdown
@@ -237,14 +237,14 @@ augroup ft_make
 augroup END
 
 " Lisp
-Plug 'vlime/vlime', {'rtp': 'vim/'}
-augroup ft_lisp
-  au!
-  au filetype lisp set completeopt=longest,menuone
-  au filetype lisp inoremap <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  au filetype lisp inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-augroup END
+" Plug 'vlime/vlime', {'rtp': 'vim/'}
+" augroup ft_lisp
+"   au!
+"   au filetype lisp set completeopt=longest,menuone
+"   au filetype lisp inoremap <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"   au filetype lisp inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" augroup END
 " inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 "   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
@@ -253,7 +253,6 @@ Plug 'karolbelina/uxntal.vim'
 
 " gemtext
 Plug 'SuneelFreimuth/vim-gemtext'
-
 
 
 " }}}
