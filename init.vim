@@ -311,6 +311,10 @@ let g:gutentags_ctags_tagfile = '.tags'
 "   set conceallevel=2 concealcursor=niv
 " endif
 
+" Local vimrc
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/local_vimrc'
+
 
 " }}}
 " ---Writing--- {{{
