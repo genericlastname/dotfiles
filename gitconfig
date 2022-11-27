@@ -5,7 +5,8 @@
 	ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	co = checkout
   st = status
+  sw = switch
 [core]
-	excludesfile = /home/kyle/.gitignore_global
+	excludesFile = /home/kyle/.gitignore
 [init]
 	defaultBranch = master

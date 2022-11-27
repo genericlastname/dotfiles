@@ -120,6 +120,8 @@ fi
 ### START PERSONAL SECTION
 ### ===================================
 
+# set PATH
+export PATH=$HOME/bin:$HOME/.cargo/bin:$GOPATH:$HOME/.local/bin:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$HOME/.local/bin/flutter/bin/cache/dart-sdk/bin:$GOBIN:$PATH
 
 # set neovim as editor
 export VISUAL=nvim
@@ -133,11 +135,6 @@ git_branch() {
         gb | sed 's/()//'
 }
 
-# set prompt -- OUTDATED, see starship.rs
-# export PS1="\[\e[2m\]\W \$(git_branch)> \[\e[0m\]"
-
-export PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
-
 # add an alias to easily activate python3 venv
 alias pyactivate=". ./.venv/bin/activate"
 
@@ -150,30 +147,12 @@ alias tcont="tmux new-session -d"
 # make fzf ignore files in '.gitignore' by using `fd` instead of `find`
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-# Set RUST_SRC_PATH for racer
-# export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-
 # golang
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH:$GOBIN
 
-# add computer specific config for different builds
-export PLATFORM=$HOME/.config/bash/platform.sh
-if [ -f  $PLATFORM ]; then source $PLATFORM; fi
-
+# FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# add npm bin to path
-export PATH=$PATH:$HOME/.npm/bin
-
-# neovim default
-alias vim="nvim"
-alias vi="nvim"
-
-# add flutter and dart to path
-export PATH=$PATH:$HOME/.local/bin/flutter/bin
-export PATH=$PATH:$HOME/.local/bin/flutter/bin/cache/dart-sdk/bin
 
 # custom ls
 alias ls='LC_ALL=C ls --color -h --group-directories-first'
@@ -181,10 +160,18 @@ alias ls='LC_ALL=C ls --color -h --group-directories-first'
 # starship.rs prompt
  eval "$(starship init bash)"
 
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$PATH:$HOME/bin
+=======
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# add computer specific config for different builds
+export PLATFORM=$HOME/.platform.sh
+if [ -f  $PLATFORM ]; then source $PLATFORM; fi

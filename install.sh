@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Useful script to install and set up my preferred dev environment. Only works
+# Fedora.
+
 home_dir=""
 packages=""
 
@@ -23,6 +26,7 @@ neovim () {
 
 tmux_setup () {
   ln -s $(pwd)/tmux.conf $home_dir/.tmux.conf
+  ln -s $(pwd)/tdev $home_dir/bin/tdev
   git clone https://github.com/tmux-plugins/tpm $home_dir/.tmux/plugins/tpm
 }
 
@@ -41,7 +45,9 @@ starship_setup () {
 
 main () {
   default=/home/$(logname)
+  mkdir -p $home_dir/bin
   read -p "Enter the home directory path: " -i $default -e home_dir
+  touch $home_dir/.platform.sh
 
   read -p "Install development packages? [Y/n] " yn
   case $yn in

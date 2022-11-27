@@ -198,20 +198,19 @@ augroup ft_cpp
 augroup END
 
 " Dart/Flutter
-" Plug 'dart-lang/dart-vim-plugin'
-" let dart_style_guide = 2
-" let dart_format_on_save = 1
-" augroup ft_dart
-"   au!
-"   au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
-"   au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
-"   au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
-"   au filetype dart setlocal ts=2 sw=2
-" augroup end
+Plug 'dart-lang/dart-vim-plugin'
+let dart_style_guide = 2
+let dart_format_on_save = 1
+augroup ft_dart
+  au!
+  au filetype dart nnoremap <leader>e :CocCommand flutter.emulators<cr>
+  au filetype dart nnoremap <leader>d :CocCommand flutter.devices<cr>
+  au filetype dart nnoremap <leader>r :CocCommand flutter.run<cr>
+  au filetype dart setlocal ts=2 sw=2
+augroup end
 
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 augroup ft_rust
   au!
   au filetype rust nmap gd <Plug>(rust-def)
@@ -220,7 +219,8 @@ augroup ft_rust
   au filetype rust nmap gt <Plug>(rust-def-tab)
   au filetype rust nmap <leader>gd <Plug>(rust-doc)
   au filetype rust setlocal foldmethod=syntax
-  au filetype rust setlocal foldnestmax=1
+  " au filetype rust setlocal foldnestmax=2
+  au filetype rust exec 'nmap <leader>rc :CocCommand<cr>rust '
 augroup end
 
 " Markdown
@@ -237,19 +237,22 @@ augroup ft_make
 augroup END
 
 " Lisp
-Plug 'vlime/vlime', {'rtp': 'vim/'}
-augroup ft_lisp
-  au!
-  au filetype lisp set completeopt=longest,menuone
-  au filetype lisp inoremap <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  au filetype lisp inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-augroup END
+" Plug 'vlime/vlime', {'rtp': 'vim/'}
+" augroup ft_lisp
+"   au!
+"   au filetype lisp set completeopt=longest,menuone
+"   au filetype lisp inoremap <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"   au filetype lisp inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" augroup END
 " inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 "   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " uxntal
 Plug 'karolbelina/uxntal.vim'
+
+" gemtext
+Plug 'SuneelFreimuth/vim-gemtext'
 
 
 " }}}
@@ -287,9 +290,20 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
-" let g:gutentags_generate_on_new = 1
-" let g:gutentags_generate_on_missing = 1
-" let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_new = 0
+let g:gutentags_generate_on_missing = 0
+let g:gutentags_generate_on_write = 0
+let g:gutentags_ctags_tagfile = '.tags'
+" let g:gutentags_ctags_exclude = [ \
+"   '.git', '.svg', '.hg', \
+"   '/tests/', 'build', 'dist', 'sites//files/', 'bin', 'node_modules', 'cache',
+"   'compiled', 'docs', 'example', 'bundle', 'vendor', '.md', '-lock.json', '.lock', \
+"   'bundle.js', 'build.js', '.rc', '.json', '.min.', '.map', '.bak', '.zip', \
+"   '.pyc', '.class', '.sln', '.Master', '.csproj', '.tmp', '.csproj.user', '.cache', \
+"   '.pdb', 'tags', 'cscope.', '.css', '.less', '.scss', '.exe', '.dll', \
+"   '.mp3', '.ogg', '.flac', '.swp', '.swo', '.bmp', '.gif', '.ico', '.jpg', '.png', \
+"   '.rar', '.zip', '.tar', '.tar.gz', '.tar.xz', '.tar.bz2', \
+"   '.pdf', '.doc', '.docx', '.ppt', '.pptx']
 " let g:gutentags_generate_on_empty_buffer = 0
 
 " " For conceal markers.
@@ -297,6 +311,60 @@ Plug 'ludovicchabant/vim-gutentags'
 "   set conceallevel=2 concealcursor=niv
 " endif
 
+" Local vimrc
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/local_vimrc'
+
+
+" }}}
+" ---Writing--- {{{
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+
+let w:ProseModeOn = 0
+
+function EnableProseMode()
+    setlocal spell spelllang=en_us
+    Goyo 66
+    SoftPencil
+  augroup numbers
+    au!
+    au BufEnter,FocusGained,InsertLeave,BufLeave,FocusLost,InsertEnter * set norelativenumber
+    au TermOpen * set nonumber norelativenumber " turn off line numbers in the term
+  augroup END
+    set nonumber norelativenumber
+    echo "Prose Mode On"
+endfu
+
+function DisableProseMode()
+    Goyo!
+    NoPencil
+    setlocal nospell
+    augroup numbers
+      au!
+      au BufEnter,FocusGained,InsertLeave * set relativenumber
+      au BufLeave,FocusLost,InsertEnter * set norelativenumber
+      au TermOpen * set nonumber norelativenumber " turn off line numbers in the term
+      au filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    augroup END
+    set number relativenumber
+    echo "Prose Mode Off"
+endfu
+
+function ToggleProseMode()
+    if w:ProseModeOn == 0
+        call EnableProseMode()
+        let w:ProseModeOn = 1
+    else
+        call DisableProseMode()
+    endif
+endfu
+
+command Prose call EnableProseMode()
+command UnProse call DisableProseMode()
+command ToggleProse call ToggleProseMode()
+
+nnoremap <leader>pp :call ToggleProseMode()<cr>
 
 " }}}
 
@@ -354,6 +422,8 @@ exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
 set updatetime=300
 
+" stop git commit messages from indenting line wraps within parens
+au FileType gitcommit set nosmartindent nocindent
 
 " }}}
 
