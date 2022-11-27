@@ -353,6 +353,8 @@ exec 'nnoremap <Leader>ss :Obsession ' . g:sessions_dir . '/<C-D>'
 exec 'nnoremap <leader>sr :so ' . g:sessions_dir . '/<C-D>'
 
 set updatetime=300
+
+
 " }}}
 
 " # vim: set foldmethod=marker:
