@@ -120,9 +120,6 @@ fi
 ### START PERSONAL SECTION
 ### ===================================
 
-# set PATH
-export PATH=$HOME/bin:$HOME/.cargo/bin:$GOPATH:$HOME/.local/bin:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$HOME/.local/bin/flutter/bin/cache/dart-sdk/bin:$GOBIN:$PATH
-
 # set neovim as editor
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -158,7 +155,7 @@ export GOBIN=$GOPATH/bin
 alias ls='LC_ALL=C ls --color -h --group-directories-first'
 
 # starship.rs prompt
- eval "$(starship init bash)"
+eval "$(starship init bash)"
 
 source "$HOME/.cargo/env"
 
@@ -166,6 +163,8 @@ source "$HOME/.cargo/env"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export PATH=$HOME/bin:$HOME/.cargo/bin:$GOBIN:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$GOBIN:$GOPATH:$PATH
+
 # add computer specific config for different builds
 export PLATFORM=$HOME/.platform.sh
-if [ -f  $PLATFORM ]; then source $PLATFORM; fi
+if [ -f $PLATFORM ]; then source $PLATFORM; fi
