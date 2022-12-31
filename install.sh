@@ -37,6 +37,7 @@ git_setup () {
 bash_setup () {
   mv $home_dir/.bashrc $home_dir/.bashrc.old
   ln -s $(pwd)/bashrc $home_dir/.bashrc
+  ln -s $(pwd)/platform.sh $home_dir/.platform.sh
 }
 
 starship_setup () {

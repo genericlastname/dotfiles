@@ -124,23 +124,6 @@ fi
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# thanks @javieitez (https://gist.github.com/justintv/168835)
-gb() {
-        echo -n '(' && git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' && echo  -n ')'
-}
-git_branch() {
-        gb | sed 's/()//'
-}
-
-# add an alias to easily activate python3 venv
-alias pyactivate=". ./.venv/bin/activate"
-
-# add aliases for tmux
-alias tnew="tmux new -s"
-alias tattach="tmux attach -t"
-alias tswitch="tmux switch -t"
-alias tcont="tmux new-session -d"
-
 # make fzf ignore files in '.gitignore' by using `fd` instead of `find`
 export FZF_DEFAULT_COMMAND='fd --type f'
 
@@ -148,20 +131,11 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
 
-# FZF
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # custom ls
 alias ls='LC_ALL=C ls --color -h --group-directories-first'
 
 # starship.rs prompt
 eval "$(starship init bash)"
-
-source "$HOME/.cargo/env"
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$HOME/bin:$HOME/.cargo/bin:$GOBIN:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$GOBIN:$GOPATH:$PATH
 
