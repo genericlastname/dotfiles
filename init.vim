@@ -58,11 +58,6 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 " bufkill.vim
 nnoremap <silent> <leader>bd :BD<cr>
 
-" ALE
-nmap <silent> <leader>aa :ALEDetail<cr>
-nmap <silent> <leader>aj :ALENext<cr>
-nmap <silent> <leader>ak :ALEPrevious<cr>
-
 " vim-dispatch
 nmap <silent> <leader>mm :Make<cr>
 nmap <silent> <leader>ms :Make!<cr>
@@ -96,7 +91,6 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_localrmdir='rm -r'
 augroup netrw_mapping
     au!
-    " au filetype netrw call NetrwMapping()
     " stop *.h files from being grayed out
     au filetype netrw setlocal suffixes-=.h
     au filetype netrw nnoremap <buffer> Q :bd<CR>
@@ -131,8 +125,6 @@ Plug 'tpope/vim-obsession'
 
 
 " Themes
-" Plug 'morhetz/gruvbox'
-" Plug 'haishanh/night-owl.vim'
 Plug 'sjl/badwolf'
 
 " statusline
@@ -191,9 +183,6 @@ augroup ft_cpp
   au!
   au filetype c,cpp setlocal commentstring=//\ %s
   au filetype c,cpp setlocal tw=4 sw=4 ts=4 sts=4 expandtab
-  " au filetype c,cpp setlocal tw=4 sw=4 ts=4 noexpandtab
-  " au filetype c,cpp setlocal ts=8 sts=0 expandtab sw=2 smarttab
-  " au filetype c,cpp setlocal foldmethod=indent foldnestmax=1
   au bufreadpre main.c,main.cc,main.cpp setlocal nofoldenable
 augroup END
 
@@ -236,18 +225,6 @@ augroup ft_make
   au filetype make set noexpandtab sw=8 sts=0
 augroup END
 
-" Lisp
-" Plug 'vlime/vlime', {'rtp': 'vim/'}
-" augroup ft_lisp
-"   au!
-"   au filetype lisp set completeopt=longest,menuone
-"   au filetype lisp inoremap <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"   au filetype lisp inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-"   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-" augroup END
-" inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-"   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
 " uxntal
 Plug 'karolbelina/uxntal.vim'
 
@@ -261,32 +238,54 @@ Plug 'SuneelFreimuth/vim-gemtext'
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+set signcolumn=yes
+set updatetime=300
 
-" ALE 
-Plug 'w0rp/ale'
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:ale_linters = {
-  \ 'cpp': ['ccls', 'clang', 'clangtidy', 'clazy'],
-  \ 'python': ['pyright', 'pylint'],
-  \ 'javascript': ['eslint'],
-  \ 'go': ['gofmt', 'gobuild'],
-  \ }
-let g:ale_fixers = {
-  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements'],
-  \ 'go': ['gofmt'],
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ }
-let g:ale_cpp_clangtidy_options = '-x c++'
-let g:ale_warn_about_trailing_whitespace = 1
-let g:ale_lint_on_enter = 1
-let g:ale_echo_msg_format = '[%linter%] %s'
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" Neosnippet
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
-"                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+nmap <leader>rn <Plug>(coc-rename)
+
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Floating window scroll binds
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" coc list binds
+nnoremap <silent> <leader>co :CocList outline<cr>
+nnoremap <silent> <leader>cs :CocList -I symbols<cr>
+nnoremap <silent> <leader>cg :CocList diagnostics<cr>
+nnoremap <silent> <leader>cr :CocListResume<cr>
 
 " Gutentags
 Plug 'ludovicchabant/vim-gutentags'
@@ -314,6 +313,17 @@ let g:gutentags_ctags_tagfile = '.tags'
 " Local vimrc
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/local_vimrc'
+
+" ALE (fixers only)
+Plug 'w0rp/ale'
+let g:ale_fixers = {
+  \ 'python': ['autopep8', 'add_blank_lines_for_python_control_statements'],
+  \ 'go': ['gofmt'],
+  \ 'rust': ['rustfmt'],
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ }
+let g:ale_fix_on_save = 1
+
 
 
 " }}}
