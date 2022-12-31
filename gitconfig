@@ -1,7 +1,8 @@
 [user]
-	email = brownkylej@gmail.com
-	name = Kyle Brown
+	email = hiroantag@proton.me
+	name = hiro
 [alias]
+	l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -10
 	ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	co = checkout
   st = status
@@ -9,4 +10,4 @@
 [core]
 	excludesFile = /home/kyle/.gitignore
 [init]
-	defaultBranch = master
+	defaultBranch = main
