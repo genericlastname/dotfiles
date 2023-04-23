@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Useful script to install and set up my preferred dev environment. Only works
-# Fedora.
+# on Fedora.
 
 home_dir=""
 packages=""

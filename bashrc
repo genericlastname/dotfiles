@@ -140,5 +140,5 @@ eval "$(starship init bash)"
 export PATH=$HOME/bin:$HOME/.cargo/bin:$GOBIN:$HOME/.npm/bin:$HOME/.local/bin/flutter/bin:$GOBIN:$GOPATH:$PATH
 
 # add computer specific config for different builds
-export PLATFORM=$HOME/.platform.sh
-if [ -f $PLATFORM ]; then source $PLATFORM; fi
+export PLATFORM_SPEC=$HOME/.platform.sh
+if [ -f $PLATFORM_SPEC ]; then source $PLATFORM_SPEC; fi

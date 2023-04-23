@@ -231,6 +231,23 @@ Plug 'karolbelina/uxntal.vim'
 " gemtext
 Plug 'SuneelFreimuth/vim-gemtext'
 
+" TidalCycles
+Plug 'tidalcycles/vim-tidal'
+let g:tidal_target = "tmux"
+augroup ft_tidal
+  au!
+  au filetype tidal nnoremap <silent> mm :<C-U>exe "TidalSend1 mute ".v:count<CR>
+  au filetype tidal nnoremap <silent> mu :<C-U>exe "TidalSend1 unmute ".v:count<CR>
+  au filetype tidal nnoremap <silent> ms :<C-U>exe "TidalSend1 solo ".v:count<CR>
+  au filetype tidal nnoremap <silent> md :<C-U>exe "TidalSend1 unsolo ".v:count<CR>
+  au filetype tidal nnoremap <silent> mq :<C-U>exe "TidalSend1 d".v:count." silence"<CR>
+  au filetype tidal nnoremap <silent> mU :<C-U>exe "TidalSend1 unmuteAll"<CR>
+  au filetype tidal nnoremap <silent> mM :<C-U>exe "TidalSend1 muteAll"<CR>
+  au filetype tidal nnoremap <silent> mD :<C-U>exe "TidalSend1 unsoloAll"<CR>
+  au filetype tidal setlocal commentstring=--\ %s
+  au filetype tidal nnoremap <silent> mH :<C-U>exe "TidalSend1 hush"
+augroup END
+
 
 " }}}
 " ---Coding Helpers--- {{{
@@ -397,6 +414,7 @@ set shiftwidth=2
 set tabstop=2
 set termguicolors
 set hidden
+set mouse=  " disable all mouse nonsense.
 let g:monochrome_italic_comments = 1
 
 augroup numbers
